@@ -1,4 +1,4 @@
-<img src="blog/assets/img/readme-banner.png" alt="ConsellerIA de Salut" width="100%">
+<img src="blog/assets/img/read-me-banner.png" alt="ConsellerIA de Salut" width="100%">
 
 Blog divulgatiu sobre l'ètica de la implantació hipotètica d'**intel·ligència artificial a la Conselleria de Salut de la Generalitat de Catalunya**, batejada com a *ConsellerIA*. Tradueix el paper acadèmic del grup a un format llegible: tres casos pràctics (PrioritzarIA, BonavistAI, Psico-Xat), els resultats d'un joc i una enquesta previs i les conclusions ètiques. El paper acadèmic complet està inclòs a l'arrel del repositori.
 
