@@ -70,7 +70,7 @@ nav {
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 3px solid var(--border-2);
   padding: 0 1.75rem;
   display: flex; align-items: center; justify-content: space-between;
   height: 104px;
@@ -1208,12 +1208,13 @@ input[type=range]::-moz-range-thumb {
 
 footer {
   background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding: 3.5rem 1.5rem;
+  border-top: 3px solid var(--border-2);
+  padding: 2.5rem 1.5rem 2.25rem;
+  margin-top: 5rem;
+  position: relative;
   text-align: center;
   font-size: 13px;
   color: var(--muted);
-  margin-top: 4rem;
 }
 footer strong {
   font-family: var(--font-serif);
@@ -1221,8 +1222,70 @@ footer strong {
   font-weight: 700;
   font-size: 15px;
 }
-footer a { color: var(--accent); border-bottom: 1px dotted currentColor; }
-footer a:hover { color: var(--accent-hover); }
+footer > strong + br + span a,
+footer > span a { color: var(--accent); border-bottom: 1px dotted currentColor; }
+footer > strong + br + span a:hover,
+footer > span a:hover { color: var(--accent-hover); }
+.footer-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-brand {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.1rem;
+  line-height: 1.2;
+}
+.footer-brand em {
+  font-style: italic;
+  color: var(--accent);
+}
+.footer-description {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.65;
+  margin: 0 auto 1.75rem;
+  max-width: 520px;
+}
+.footer-description a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  font-weight: 500;
+  transition: opacity .2s, color .2s;
+}
+.footer-description a:hover {
+  color: var(--accent-hover);
+  opacity: 0.85;
+}
+.footer-divider {
+  width: 36px;
+  height: 1px;
+  background: var(--border-2);
+  margin: 0 auto 1.5rem;
+}
+.footer-authors {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.footer-meta {
+  display: block;
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 
 .axes-grid {
   display: grid;
@@ -1362,4 +1425,130 @@ footer a:hover { color: var(--accent-hover); }
   .slider-lbl { width: 130px; font-size: 12.5px; }
   .bias-lbl { width: 130px; font-size: 12.5px; }
   .vbar-label { width: 80px; }
+}
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 1px;
+  transition: transform .25s ease, opacity .2s ease;
+}
+nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 760px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 6px 0 12px;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+    max-height: calc(100vh - 91px);
+    overflow-y: auto;
+  }
+  nav.nav-open .nav-links {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity .22s ease, transform .22s ease, visibility 0s;
+  }
+  .nav-links a {
+    display: block;
+    padding: 13px 1.25rem;
+    font-size: 14.5px;
+    width: 100%;
+  }
+  .nav-links a.active { background: var(--accent-soft); }
+
+  .nav-dropdown { width: 100%; }
+  .nav-dropdown-toggle {
+    display: flex;
+    width: 100%;
+    padding: 13px 1.25rem;
+    font-size: 14.5px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  .nav-dropdown-menu {
+    position: static;
+    transform: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--surface-2);
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: max-height .25s ease, padding .25s ease;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu { transform: none; }
+  .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-menu {
+    max-height: 260px;
+    padding: 4px 0;
+    transform: none;
+  }
+  .nav-dropdown-menu a {
+    padding: 11px 2.25rem;
+    font-size: 13.5px;
+    white-space: normal;
+  }
+
+  .card-grid[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  .vote-grid[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 560px) {
+  .nav-links { max-height: calc(100vh - 78px); }
+  .quote { padding: 1.75rem 0; font-size: 18px; margin: 1.75rem 0; }
+  .sim-box { padding: 1.25rem 1rem; }
+  .ethics-panel { padding: 1.25rem 1rem; }
+  .vote-section { padding: 1.5rem 1.25rem; }
+  .vote-title { font-size: 17px; }
+  .callout { padding: 1rem 1.25rem; }
+  .reading-card { padding: 1rem 1.25rem; gap: 12px; }
+  .reading-thumb { width: 44px; height: 44px; font-size: 18px; }
+  footer { padding: 2rem 1.25rem 1.75rem; }
+  .footer-brand { font-size: 20px; }
+  .footer-description { font-size: 13.5px; }
+  .formula { padding: 1rem 1.25rem; font-size: 13px; }
 }

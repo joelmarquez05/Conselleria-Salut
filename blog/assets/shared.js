@@ -91,3 +91,59 @@
     });
   });
 })();
+
+(function () {
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+  var navLinks = nav.querySelector('.nav-links');
+  if (!navLinks) return;
+
+  var btn = document.createElement('button');
+  btn.className = 'nav-toggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Obrir menú de navegació');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(btn);
+
+  function closeMenu() {
+    if (!nav.classList.contains('nav-open')) return;
+    nav.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Obrir menú de navegació');
+    nav.querySelectorAll('.nav-dropdown-toggle').forEach(function (t) {
+      t.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    btn.setAttribute('aria-label', isOpen ? 'Tancar menú de navegació' : 'Obrir menú de navegació');
+    if (!isOpen) {
+      nav.querySelectorAll('.nav-dropdown-toggle').forEach(function (t) {
+        t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  navLinks.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== navLinks) {
+      if (t.tagName === 'A') {
+        closeMenu();
+        return;
+      }
+      t = t.parentNode;
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target)) closeMenu();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
