@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="blog/assets/img/conselleria-logo.png" alt="ConsellerIA de Salut" width="220">
-</p>
+<img src="blog/assets/img/readme-banner.png" alt="ConsellerIA de Salut" width="100%">
 
 # ConsellerIA — Blog
 
