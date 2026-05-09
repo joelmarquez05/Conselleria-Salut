@@ -93,6 +93,21 @@
 })();
 
 (function () {
+  var img = document.querySelector('.nav-logo img');
+  if (!img) return;
+  var desktopSrc = img.getAttribute('src');
+  if (!desktopSrc || desktopSrc.indexOf('conselleria-logo.png') === -1) return;
+  var mobileSrc = desktopSrc.replace('conselleria-logo.png', 'conselleria-logo-mobile.png');
+  var preload = new Image();
+  preload.src = mobileSrc;
+  var mql = window.matchMedia('(max-width: 760px)');
+  function swap(e) { img.src = e.matches ? mobileSrc : desktopSrc; }
+  swap(mql);
+  if (mql.addEventListener) mql.addEventListener('change', swap);
+  else if (mql.addListener) mql.addListener(swap);
+})();
+
+(function () {
   var nav = document.querySelector('nav');
   if (!nav) return;
   var navLinks = nav.querySelector('.nav-links');
