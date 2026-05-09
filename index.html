@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConsellerIA — IA i ètica a la sanitat catalana</title>
+  <meta name="description"
+    content="Anàlisi ètic de la implantació d'intel·ligència artificial a la Conselleria de Salut de la Generalitat de Catalunya. Exercici TAED1, UPC.">
+  <link rel="icon" type="image/png" href="assets/img/conselleria-logo.png">
+  <link rel="stylesheet" href="assets/shared.css">
+</head>
+
+<body>
+
+  <div class="senyera-bar" aria-hidden="true"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html" aria-label="ConsellerIA de Salut">
+      <img src="assets/img/conselleria-logo.png" alt="ConsellerIA de Salut · Generalitat de Catalunya">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inici</a>
+      <a href="joc-resultats.html">Joc interactiu</a>
+      <a href="actualitat.html">Anàlisi d'actualitat</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Casos pràctics
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="prioritzaria.html" role="menuitem">PrioritzarIA</a>
+          <a href="bonavistai.html" role="menuitem">BonavistAI</a>
+          <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
+        </div>
+      </div>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+  </nav>
+
+  <header class="hero hero-video">
+    <div class="hero-eyebrow">Comunicat oficial · 2026</div>
+    <h1>La <em>ConsellerIA</em> ha pres el relleu.</h1>
+    <p class="hero-sub">Comunicat de la nova consellera algorítmica del departament de Salut. Simulació ètica per a
+      l'assignatura TAED1 (UPC).</p>
+
+    <figure class="video-frame">
+      <div class="video-poster">
+        <span class="video-eyebrow">▶ Vídeo · Comunicat oficial</span>
+        <blockquote class="video-quote">
+          «Hola a tots els estudiants de dades. Soc el nou model d'IA del departament de salut. A partir d'avui, prenc
+          el relleu de la consellera Olga Pané.»
+        </blockquote>
+        <span class="video-cite">— ConsellerIA, hipòtesi 2026</span>
+      </div>
+      <button class="video-play" type="button" aria-label="Reproduir vídeo">
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+          <path d="M8 5v14l11-7z" fill="currentColor" />
+        </svg>
+      </button>
+    </figure>
+
+    <a href="#projecte" class="scroll-indicator" aria-label="Continua llegint">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </a>
+  </header>
+
+  <main class="container">
+
+    <section id="projecte" class="reveal">
+      <div class="section-label">El context ètic</div>
+      <h2>Una conselleria <em>algorítmica</em>?</h2>
+      <p>La Conselleria de Salut de la Generalitat de Catalunya gestiona un pressupost que supera els <strong>13.500
+          milions d'euros</strong> el 2026, coordina el CatSalut, l'ICS i la xarxa SISCAT, i dóna feina, directament o
+        indirecta, a desenes de milers de professionals. El sistema arriba avui sotmès a una pressió estructural sense
+        precedents: llistes d'espera de fins a sis mesos en traumatologia, fins a 294 dies en endoscòpies digestives a
+        la regió metropolitana Nord, conflictes laborals oberts i el recent relleu de la consellera Olga Pané.</p>
+      <p>En paral·lel, el <em>Programa Salut/IA</em> ja té prop d'un centenar d'algorismes registrats al SISCAT — des
+        del cribratge de retinopatia diabètica a l'AQuAS fins al projecte Critic.CAT a les UCIs o el sistema SEPI-IA a
+        l'Hospital de Bellvitge. La temptació política és clara: <strong>delegar part de les decisions a sistemes
+          d'intel·ligència artificial</strong> per descongestionar el sistema. Però fins on es pot delegar sense
+        vulnerar la dignitat dels pacients, la responsabilitat dels professionals i la sobirania democràtica del
+        sistema? Aquest blog recull el treball de cinc estudiants per posar a prova aquesta pregunta amb tres casos
+        d'estudi i una sessió de debat amb estudiants de tercer curs del Grau en Ciència i Enginyeria de Dades.</p>
+      <div class="callout">
+        <p>La pregunta no és si la IA pot fer-ho tècnicament. La pregunta és si hauríem de deixar-li fer-ho — i sota
+          quines condicions.</p>
+      </div>
+    </section>
+
+    <section id="joc" class="reveal">
+      <div class="section-label">Posa't a la pell</div>
+      <h2>Ara és el <em>teu torn</em></h2>
+      <p>La teoria és fàcil quan la llegeixes. Posa't a la pell del Conseller/a de la <em>ConsellerIA</em> de Salut i
+        decideix tu mateix. Setze torns, cartes a esquerra o dreta — inspirat en <em>Reigns</em>. Cada decisió mou
+        quatre forces que has de mantenir en equilibri, o el sistema col·lapsa.</p>
+
+      <div class="axes-grid">
+        <div class="axis">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12h4l2-6 4 12 2-6h6" />
+          </svg>
+          <strong>Pacients</strong>
+          <span>Llistes d'espera, dignitat i accés.</span>
+        </div>
+        <div class="axis">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M5 21c0-3.866 3.134-7 7-7s7 3.134 7 7" />
+          </svg>
+          <strong>Professionals</strong>
+          <span>Càrrega laboral, autonomia i confiança.</span>
+        </div>
+        <div class="axis">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 5a7 7 0 1 0 0 14" />
+            <path d="M5 10h9M5 14h9" />
+          </svg>
+          <strong>Pressupost</strong>
+          <span>13.500 M€, llicències i amortitzacions.</span>
+        </div>
+        <div class="axis">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 19c0-9 7-14 16-14-1 9-5 14-14 14" />
+            <path d="M5 19l9-9" />
+          </svg>
+          <strong>Medi ambient</strong>
+          <span>Aigua, energia i petjada del re-entrenament.</span>
+        </div>
+      </div>
+
+      <div class="stat-band" role="group" aria-label="Resum del joc">
+        <div class="stat-band__item">
+          <span class="stat-band__num">16</span>
+          <span class="stat-band__label">Torns per partida</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num">4</span>
+          <span class="stat-band__label">Eixos en equilibri</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num">82</span>
+          <span class="stat-band__label">Partides jugades</span>
+        </div>
+      </div>
+
+      <p>Inverteixes en IA o en personal? Tanques un CAP rural o puges impostos? <strong>Cada decisió té
+          conseqüències</strong>. Quan acabis, mira què va passar a les <strong>82 partides</strong> de companys
+        de classe — i per què el medi ambient va ser el primer en caure, gairebé sempre.</p>
+
+      <div class="cta-row">
+        <a class="cta-btn primary" href="joc-resultats.html">Veure els resultats del joc →</a>
+      </div>
+    </section>
+
+    <section id="actualitat" class="reveal">
+      <div class="section-label">L'estat actual</div>
+      <h2>Mentre llegies això, els <em>titulars</em></h2>
+      <p>El debat no és teòric. Mentre escrivim aquest blog, la sanitat catalana ja està aprovant pilots, contractant
+        llicències i pagant les conseqüències de les primeres decisions automatitzades. Aquests són els titulars que
+        han marcat el camí — pausa el carrusel passant-hi el cursor per damunt.</p>
+    </section>
+
+    <div class="news-marquee-wrap" aria-label="Titulars d'actualitat sobre IA i sanitat catalana">
+      <div class="news-track">
+
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">El País</span> · 2025</div>
+          <h3>«La IA podria diagnosticar amb precisió igual o superior als professionals», declara la consellera Pané
+          </h3>
+          <p>El col·lectiu mèdic alerta del risc de substitució i de la confiança excessiva en sistemes
+            automatitzats.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">El País</span> · 2026</div>
+          <h3>«La consejera de Salud, Olga Pané, de baja tras polémicas en la gestión sanitaria»</h3>
+          <p>El relleu arriba en plena pressió per llistes d'espera, conflictes laborals i incentius retirats.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">El País</span> · 2025</div>
+          <h3>«Las listas de espera en Cataluña aumentan y tensionan el sistema sanitario»</h3>
+          <p>Traumatologia arriba a sis mesos d'espera per a una primera consulta.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">CDTI · Tecnalia</span> · 2026</div>
+          <h3>SEPI-IA arriba a l'Hospital de Bellvitge: simula l'evolució del pulmó a cinc anys vista</h3>
+          <p>L'algoritme detecta lesions invisibles a l'ull humà i anticipa el deteriorament clínic.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">AQuAS</span> · 2023</div>
+          <h3>Alerta per detectar solucions basades en IA sobre la retinopatia diabètica</h3>
+          <p>El Programa Salut/IA exigeix avaluació clínica abans del desplegament massiu als CAPs.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">Crónica Sanitaria</span> · 2025</div>
+          <h3>«Proyectos de IA en atención primaria en Cataluña»</h3>
+          <p>Una vintena de pilots clínics ja operen a CAPs catalans, segons fonts del Departament.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">Elmón</span> · 2025</div>
+          <h3>«Fins a 300 dies en llista d'espera»: Metges de Catalunya denuncia la desigualtat territorial</h3>
+          <p>L'informe sindical reclama mesures estructurals abans de delegar decisions a la IA.</p>
+        </article>
+        <article class="news-card">
+          <div class="news-meta"><span class="news-source">DOUE</span> · 2024</div>
+          <h3>El Reglament (UE) 2024/1689 entra en vigor: la IA mèdica, classificada com a alt risc</h3>
+          <p>Supervisió humana, traçabilitat i avaluació de conformitat passen a ser obligatòries.</p>
+        </article>
+
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">El País</span> · 2025</div>
+          <h3>«La IA podria diagnosticar amb precisió igual o superior als professionals», declara la consellera Pané
+          </h3>
+          <p>El col·lectiu mèdic alerta del risc de substitució i de la confiança excessiva en sistemes
+            automatitzats.</p>
+        </article>
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">El País</span> · 2026</div>
+          <h3>«La consejera de Salud, Olga Pané, de baja tras polémicas en la gestión sanitaria»</h3>
+          <p>El relleu arriba en plena pressió per llistes d'espera, conflictes laborals i incentius retirats.</p>
+        </article>
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">El País</span> · 2025</div>
+          <h3>«Las listas de espera en Cataluña aumentan y tensionan el sistema sanitario»</h3>
+          <p>Traumatologia arriba a sis mesos d'espera per a una primera consulta.</p>
+        </article>
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">CDTI · Tecnalia</span> · 2026</div>
+          <h3>SEPI-IA arriba a l'Hospital de Bellvitge: simula l'evolució del pulmó a cinc anys vista</h3>
+          <p>L'algoritme detecta lesions invisibles a l'ull humà i anticipa el deteriorament clínic.</p>
+        </article>
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">AQuAS</span> · 2023</div>
+          <h3>Alerta per detectar solucions basades en IA sobre la retinopatia diabètica</h3>
+          <p>El Programa Salut/IA exigeix avaluació clínica abans del desplegament massiu als CAPs.</p>
+        </article>
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">Crónica Sanitaria</span> · 2025</div>
+          <h3>«Proyectos de IA en atención primaria en Cataluña»</h3>
+          <p>Una vintena de pilots clínics ja operen a CAPs catalans, segons fonts del Departament.</p>
+        </article>
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">Elmón</span> · 2025</div>
+          <h3>«Fins a 300 dies en llista d'espera»: Metges de Catalunya denuncia la desigualtat territorial</h3>
+          <p>L'informe sindical reclama mesures estructurals abans de delegar decisions a la IA.</p>
+        </article>
+        <article class="news-card" aria-hidden="true">
+          <div class="news-meta"><span class="news-source">DOUE</span> · 2024</div>
+          <h3>El Reglament (UE) 2024/1689 entra en vigor: la IA mèdica, classificada com a alt risc</h3>
+          <p>Supervisió humana, traçabilitat i avaluació de conformitat passen a ser obligatòries.</p>
+        </article>
+
+      </div>
+    </div>
+
+    <section id="casos" class="reveal">
+      <div class="section-label">Els tres casos</div>
+      <h2>Tres dilemes, tres algoritmes</h2>
+      <p>Cada cas posa l'algoritme en un context clínic concret i el sotmet a una anàlisi ètica en tres nivells:
+        <em>micro</em> (el pacient individual), <em>meso</em> (l'organització sanitària) i <em>macro</em> (la societat
+        catalana i el seu cost ambiental).
+      </p>
+      <div class="card-grid">
+        <a class="card-link case--priori" href="prioritzaria.html">
+          <svg class="card-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v18" />
+            <path d="M8 21h8" />
+            <path d="M5 6h14" />
+            <path d="M5 6l-3 6a3 3 0 0 0 6 0z" />
+            <path d="M19 6l-3 6a3 3 0 0 0 6 0z" />
+          </svg>
+          <span class="card-tag">Cas 01</span>
+          <h3>Prioritzar<em>IA</em></h3>
+          <p>Quatre pacients, tres òrgans, un algoritme. Qui decideix qui viu quan els recursos són limitats?</p>
+          <span class="card-cta">Llegir el cas →</span>
+        </a>
+        <a class="card-link case--bona" href="bonavistai.html">
+          <svg class="card-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <span class="card-tag">Cas 02</span>
+          <h3>Bonavist<em>AI</em></h3>
+          <p>Un cribratge ocular automàtic redueix llistes d'espera un 80 %, però falla més en pacients d'origen
+            asiàtic. Eficiència o equitat?</p>
+          <span class="card-cta">Llegir el cas →</span>
+        </a>
+        <a class="card-link case--psico" href="psico-xat.html">
+          <svg class="card-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            <circle cx="9" cy="11" r="0.6" fill="currentColor" />
+            <circle cx="12" cy="11" r="0.6" fill="currentColor" />
+            <circle cx="15" cy="11" r="0.6" fill="currentColor" />
+          </svg>
+          <span class="card-tag">Cas 03</span>
+          <h3>Psico-<em>Xat</em></h3>
+          <p>Un xatbot LLM atén joves amb ansietat 24/7. Un dia, una al·lucinació porta al pitjor desenllaç. Quin error
+            és acceptable?</p>
+          <span class="card-cta">Llegir el cas →</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="conclusions" class="reveal">
+      <div class="section-label">El final</div>
+      <h2>Conclusions i codi deontològic</h2>
+      <p>Després de tres casos, un joc i una sessió sencera de debat, el patró és consistent: la IA pot millorar
+        l'eficiència del sistema sanitari, però només és legítima quan opera sota supervisió humana real, criteris
+        explicables i garanties efectives contra el biaix.</p>
+      <div class="cta-row">
+        <a class="cta-btn primary" href="conclusions.html">Llegir les conclusions →</a>
+      </div>
+    </section>
+
+    <section id="paper" class="reveal">
+      <div class="section-label">El paper</div>
+      <h2>Indaga al <em>màxim</em></h2>
+      <p>Aquest blog és la versió divulgativa d'un treball acadèmic més extens, amb el detall complet dels marcs
+        ètics, la metodologia del joc, els resultats de l'enquesta i la bibliografia. Si vols arribar al fons de cada
+        decisió, descarrega'l.</p>
+      <div class="cta-row">
+        <a class="cta-btn primary" href="assets/paper.pdf" download>↓ Descarregar el paper (PDF)</a>
+        <a class="cta-btn" href="assets/paper.pdf" target="_blank" rel="noopener">Obrir en una pestanya nova →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>ConsellerIA</strong> · Anàlisi ètic de l'aplicació d'IA en la sanitat catalana com a part de l'assignatura TAED1 de la UPC<br>
+    <span style="margin-top:8px;display:block">Biel Altimira · Breixo Brión · Clara García · Gerard Grau · Joel
+      Márquez</span>
+  </footer>
+
+  <script src="assets/shared.js"></script>
+</body>
+
+</html>

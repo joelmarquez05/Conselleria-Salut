@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BonavistAI — ConsellerIA</title>
+  <meta name="description"
+    content="L'eficiència de la IA i el dret a un diagnòstic just: anàlisi del biaix algorítmic en el cribratge de retinopatia diabètica.">
+  <link rel="icon" type="image/png" href="assets/img/conselleria-logo.png">
+  <link rel="stylesheet" href="assets/shared.css">
+</head>
+
+<body>
+
+  <div class="senyera-bar" aria-hidden="true"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html" aria-label="ConsellerIA de Salut">
+      <img src="assets/img/conselleria-logo.png" alt="ConsellerIA de Salut · Generalitat de Catalunya">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inici</a>
+      <a href="joc-resultats.html">Joc interactiu</a>
+      <a href="actualitat.html">Anàlisi d'actualitat</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Casos pràctics
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="prioritzaria.html" role="menuitem">PrioritzarIA</a>
+          <a href="bonavistai.html" role="menuitem">BonavistAI</a>
+          <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
+        </div>
+      </div>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Cas 02 · Cribratge ocular automàtic</div>
+    <h1>Bonavist<em>AI</em>: l'eficiència que <em>no veu</em> a tothom igual.</h1>
+    <p class="hero-sub">Una IA detecta retinopatia diabètica en segons. Redueix les llistes d'espera un 80 %. Però falla
+      un 15 % més en pacients d'origen asiàtic. El cas d'en Li.</p>
+    <div class="hero-meta">
+      <span>Joel Márquez · UPC GCED</span>
+      <span class="dot"></span>
+      <span>Lectura: ~7 min</span>
+      <span class="dot"></span>
+      <span>2026</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="context" class="reveal">
+      <div class="section-label">El context</div>
+      <h2>Una IA real, <em>no una hipòtesi</em></h2>
+      <p>El 2023, l'<strong>Agència de Qualitat i Avaluació Sanitàries de Catalunya (AQuAS)</strong> va obrir una
+        consulta pública al mercat per contractar solucions d'IA per al cribratge de retinopatia diabètica a l'atenció
+        primària, amb una licitació estimada en 340.000 € i finançament del Pla de Recuperació, Transformació i
+        Resiliència (NextGenerationEU). En paral·lel, grups de recerca catalans ja publicaven estudis avaluant aquests
+        sistemes. <em>BonavistAI</em> és el model d'aquest cas: una IA instal·lada als CAPs que analitza retinografies
+        en pocs segons i decideix qui derivar a l'oftalmòleg.</p>
+      <p>En <strong>Li</strong> té 70 anys, és d'origen xinès i viu a l'Eixample des de fa quaranta anys. És diabètic, i
+        necessita controls anuals. Fins ara les llistes d'espera per veure un especialista eren de mesos; amb el nou
+        sistema, el diagnòstic li arriba a l'instant al seu mateix ambulatori. La màquina li diu que el seu fons d'ull
+        està «perfecte» i marxa cap a casa confiant plenament en la tecnologia.</p>
+      <div class="callout">
+        <p>«La intel·ligència artificial ja diagnostica amb una precisió igual o superior a la dels professionals.
+          Menys estetoscopis i més targetes gràfiques.» — declaracions atribuïdes a la consellera el 2025.</p>
+      </div>
+    </section>
+
+    <section id="biaix" class="reveal">
+      <div class="section-label">El biaix</div>
+      <h2>Quan la <em>pigmentació de l'iris</em> importa més que el diagnòstic</h2>
+      <p>El sistema s'ha entrenat majoritàriament amb retinografies de pacients d'origen europeu. La major
+        <strong>pigmentació ocular</strong> (concentració de melanina) en persones d'origen asiàtic genera un contrast
+        diferent que l'algorisme no interpreta bé. La taxa de falsos negatius creix. La precisió del sistema és del
+        <strong>94 % en pacients europeus</strong> i baixa al <strong>79 % en pacients d'origen asiàtic</strong>.</p>
+
+      <div style="margin:1.75rem 0">
+        <div class="bias-row"><span class="bias-lbl">Pacients europeus</span>
+          <div class="bias-track">
+            <div class="bias-fill" style="width:94%;background:#16a34a"></div>
+          </div><span class="bias-tag" style="color:#15803d">94 %</span>
+        </div>
+        <div class="bias-row"><span class="bias-lbl">Pacients asiàtics</span>
+          <div class="bias-track">
+            <div class="bias-fill" style="width:79%;background:#b91c1c"></div>
+          </div><span class="bias-tag" style="color:#b91c1c">79 %</span>
+        </div>
+      </div>
+
+      <div class="formula">
+        Δ precisió = 94 % − 79 % = <span class="hl">15 punts</span> de bretxa<br>
+        Falsos negatius (asiàtics) ≈ <span class="hl2">3×</span> els d'europeus per cada 100 cribratges
+      </div>
+
+      <p>En Li ha entrat en aquesta «bretxa d'equitat» com a fals negatiu. Una oftalmòloga de l'hospital de referència
+        s'adona que el seu fons d'ull no estava bé. Per a ell, l'error es paga en pèrdua de visió: un dany biològic
+        <strong>irreversible</strong> que ni el pacient ni el professional no havien identificat.</p>
+    </section>
+
+    <section id="nivells" class="reveal">
+      <div class="section-label">L'anàlisi</div>
+      <h2>Tres nivells, <em>tres preguntes</em></h2>
+      <p>El cas no es pot reduir a una sola dimensió. Cada nivell d'anàlisi exposa un conflicte de valors diferent.</p>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showLevel('micro',this)">Micro · pacient</button>
+        <button class="tab-btn" onclick="showLevel('meso',this)">Meso · institució</button>
+        <button class="tab-btn" onclick="showLevel('macro',this)">Macro · societat</button>
+      </div>
+
+      <div class="ethics-panel active" id="lvl-micro">
+        <div class="verdict-row">
+          <span class="chip chip-out">⚠ Consentiment vulnerat</span>
+          <span class="chip chip-out">✗ Dany irreversible</span>
+        </div>
+        <h3>Dignitat, autonomia i consentiment informat</h3>
+        <p>Si un sistema probabilístic condiciona el judici clínic, té dret en Li a saber que el seu diagnòstic prové
+          d'un algorisme amb biaixos documentats? La <strong>Llei 29/2010</strong> obliga l'Administració a oferir una
+          informació «objectiva, completa i veraç» — no informar-lo seria vulnerar aquest deure i, més greu, el
+          principi ètic subjacent. La irreversibilitat del dany trenca el càlcul utilitari habitual: un cop perduda la
+          visió, no es compensa amb cap eficiència administrativa.</p>
+      </div>
+
+      <div class="ethics-panel" id="lvl-meso">
+        <div class="verdict-row">
+          <span class="chip chip-mb">⚠ Biaix d'automatització</span>
+          <span class="chip chip-mb">⚠ Negligència institucional</span>
+        </div>
+        <h3>Biaix d'automatització i el problema de les moltes mans</h3>
+        <p>El metge del CAP valida desenes de casos per hora. Si la màquina marca en Li com a «sa», la supervisió humana
+          es torna formal. És el <em>biaix d'automatització</em>. La cadena de responsabilitat queda diluïda:
+          l'administració ha contractat un sistema amb dades poc diverses, els enginyers no han garantit
+          representativitat, i el metge valida per inèrcia. <strong>Dennis Thompson</strong> ho va anomenar el
+          <em>problema de les moltes mans</em>; <strong>Mark Coeckelbergh</strong> ho ha traslladat als sistemes d'IA
+          actuals. La Llei 29/2010 situa la responsabilitat en l'òrgan que contracta, així que un error sistemàtic per
+          biaix és <strong>negligència institucional</strong>.</p>
+      </div>
+
+      <div class="ethics-panel" id="lvl-macro">
+        <div class="verdict-row">
+          <span class="chip chip-out">✗ Dades de la Xina = il·legal</span>
+          <span class="chip chip-mb">⚠ Petjada hídrica</span>
+        </div>
+        <h3>Sobirania tecnològica, RGPD i petjada ambiental</h3>
+        <p>Comprar dades clíniques d'hospitals xinesos per re-entrenar el model és la solució aparentment fàcil. Però
+          xoca amb el <strong>RGPD</strong> (articles 45-46): la Xina no té decisió d'adequació, i les dades de salut
+          són categoria especial (art. 9). Comprar-les sense un marc contractual equivalent al RGPD és, amb molta
+          probabilitat, <strong>contrari al dret europeu</strong>. A més, cada cicle de re-entrenament té un cost
+          energètic i hídric: l'Annex del paper estima fins a 10⁴ litres d'aigua per cicle. La via raonable és la
+          <strong>recollida equitativa interna</strong> de dades a Catalunya.</p>
+      </div>
+    </section>
+
+    <section id="tensions" class="reveal">
+      <div class="section-label">Tensions ètiques</div>
+      <h2>Quatre lectures, <em>un mateix dilema</em></h2>
+      <p>El debat a classe va polaritzar-se entre el conseqüencialisme (80 % menys de llistes d'espera) i la
+        deontologia (igual deure de protecció per a tothom). L'ètica de la cura va matisar; les virtuts van demanar
+        prudència.</p>
+
+      <div class="resp-grid">
+        <div class="resp-card" style="border-left-color:#0284c7">
+          <div class="resp-label" style="color:#0284c7">Utilitarisme</div>
+          <p><strong>Mantenir.</strong> El benestar del 94 % justifica l'error de la minoria. L'eficiència agregada
+            té prioritat.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#b91c1c">
+          <div class="resp-label" style="color:#b91c1c">Deontologia</div>
+          <p><strong>Aturar.</strong> Si el sistema no garanteix el mateix deure de protecció a tothom, és inherentment
+            injust. Cap dany col·lateral és acceptable.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#d97706">
+          <div class="resp-label" style="color:#92400e">Ètica de la cura</div>
+          <p><strong>Condicionat.</strong> No es pot sacrificar el cas particular a l'estadística. Cal reforçar la
+            validació humana en grups vulnerables.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#16a34a">
+          <div class="resp-label" style="color:#15803d">Virtuts</div>
+          <p><strong>Prudència.</strong> El bon professional cultiva l'excel·lència, no aplica recomanacions de la
+            màquina per inèrcia. La phronesis és insubstituïble.</p>
+        </div>
+      </div>
+
+      <blockquote class="quote">
+        «No es pot sacrificar el cas particular a l'estadística, però tampoc negar els guanys sistèmics que el sistema
+        aporta al conjunt.»
+        <cite>— Síntesi de l'ètica de la cura, debat de l'aula</cite>
+      </blockquote>
+    </section>
+
+    <section id="decisio" class="reveal">
+      <div class="section-label">La decisió adoptada</div>
+      <h2>Cinc condicions, <em>una postura intermèdia</em></h2>
+      <p>Després del debat, optem per mantenir BonavistAI <strong>com a eina de suport, mai com a decisor autònom</strong>,
+        sota cinc condicions innegociables:</p>
+
+      <div class="card-grid" style="grid-template-columns: 1fr; gap: 14px">
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">01 · Validació humana efectiva</span>
+          <p>Revisió clínica documentada i auditable per cada cas. El temps assignat al professional ha de permetre una
+            verificació real, no una signatura per inèrcia.</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">02 · Avís explícit als grups de risc</span>
+          <p>Pacients de subgrups amb precisió documentadament inferior han de poder sol·licitar una <strong>segona
+              lectura humana independent</strong>. La transparència sobre les limitacions del sistema forma part del
+            deure d'informació (Llei 29/2010).</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">03 · Recollida equitativa interna</span>
+          <p>Dades de pacients de grups minoritaris residents a Catalunya, amb consentiment explícit, en lloc de
+            comprar-les a tercers països sense garanties RGPD.</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">04 · Auditoria contínua d'equitat</span>
+          <p>Publicació periòdica de la precisió per subgrups, en línia amb un Observatori d'IA en Salut. La caixa
+            negra mai pot ser definitiva.</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">05 · Avaluació d'impacte ambiental</span>
+          <p>Prèvia a cada re-entrenament, per assegurar la coherència amb els objectius de sostenibilitat. El cost
+            d'aigua i energia compta com a criteri de decisió.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.5rem">
+        <p><strong>Principis ètics que fonamenten la decisió:</strong> dignitat humana, no maleficència, equitat,
+          transparència, sostenibilitat i responsabilitat distribuïda amb traçabilitat efectiva.</p>
+      </div>
+    </section>
+
+    <section id="tu" class="reveal">
+      <div class="section-label">El teu torn</div>
+      <h2>I tu, <em>què faries</em>?</h2>
+      <div class="vote-section">
+        <div class="vote-title">Com hauria d'actuar la Conselleria de Salut davant del biaix de BonavistAI?</div>
+        <div class="vote-grid">
+          <button class="vote-btn" onclick="castVoteB('apagar',this)">Apagar-lo fins que sigui 100 % equitatiu</button>
+          <button class="vote-btn" onclick="castVoteB('avisar',this)">Mantenir-lo, però avisar grups de risc</button>
+          <button class="vote-btn" onclick="castVoteB('mantenir',this)">Mantenir-lo tal com està</button>
+          <button class="vote-btn" onclick="castVoteB('humans',this)">Substituir-lo per més oftalmòlegs humans</button>
+        </div>
+        <div class="vote-results" id="vResultsB">
+          <div
+            style="font-family:var(--font-mono);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;text-align:left">
+            Resultats acumulats (simulació de l'aula · 28 respostes inicials)</div>
+          <div class="vbar-row"><span class="vbar-label">Apagar</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbB1" style="background:#b91c1c"></div>
+            </div><span class="vbar-pct" id="vpB1"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Avisar</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbB2" style="background:#16a34a"></div>
+            </div><span class="vbar-pct" id="vpB2"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Mantenir</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbB3" style="background:#d97706"></div>
+            </div><span class="vbar-pct" id="vpB3"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Humans</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbB4" style="background:#0284c7"></div>
+            </div><span class="vbar-pct" id="vpB4"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>ConsellerIA</strong> · Anàlisi ètic de l'aplicació d'IA en la sanitat catalana com a part de l'assignatura TAED1 de la UPC<br>
+    <span style="margin-top:8px;display:block"><a href="index.html">Tornar a l'inici</a></span>
+  </footer>
+
+  <script src="assets/shared.js"></script>
+  <script src="assets/bonavistai.js"></script>
+</body>
+
+</html>

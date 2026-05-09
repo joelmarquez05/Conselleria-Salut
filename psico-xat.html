@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psico-Xat — ConsellerIA</title>
+  <meta name="description"
+    content="L'assistent psicològic per IA i el límit de l'error acceptable: anàlisi d'un xatbot LLM 24/7 de salut mental.">
+  <link rel="icon" type="image/png" href="assets/img/conselleria-logo.png">
+  <link rel="stylesheet" href="assets/shared.css">
+</head>
+
+<body>
+
+  <div class="senyera-bar" aria-hidden="true"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html" aria-label="ConsellerIA de Salut">
+      <img src="assets/img/conselleria-logo.png" alt="ConsellerIA de Salut · Generalitat de Catalunya">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inici</a>
+      <a href="joc-resultats.html">Joc interactiu</a>
+      <a href="actualitat.html">Anàlisi d'actualitat</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Casos pràctics
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="prioritzaria.html" role="menuitem">PrioritzarIA</a>
+          <a href="bonavistai.html" role="menuitem">BonavistAI</a>
+          <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
+        </div>
+      </div>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Cas 03 · Salut mental algorítmica</div>
+    <h1>Psico-<em>Xat</em>: el cost d'una <em>al·lucinació</em>.</h1>
+    <p class="hero-sub">Un xatbot basat en un LLM atén milers de joves 24/7. Funciona. Fins que un dia no entén una
+      ironia fosca i un adolescent no truca a ningú més. Quin marge d'error és tolerable?</p>
+    <div class="hero-meta">
+      <span>Gerard Grau · UPC GCED</span>
+      <span class="dot"></span>
+      <span>Lectura: ~6 min</span>
+      <span class="dot"></span>
+      <span>2026</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="context" class="reveal">
+      <div class="section-label">El context</div>
+      <h2>Quan la saturació empeny a <em>delegar el que no es pot delegar</em></h2>
+      <p>La <strong>ConsellerIA</strong> implanta un xatbot basat en un Model de Llenguatge Extens (LLM) per fer front a
+        la saturació de salut mental. Funciona 24 hores al dia, 7 dies a la setmana, sense vagues, sense guàrdies,
+        sense baixes. Atén milers de joves amb ansietat, soledat, episodis depressius. La consellera presumeix de
+        resultats: l'estat d'ànim millora, l'aïllament baixa, les llistes d'espera dels CSMA es descongestionen.</p>
+      <p>El sistema sembla un èxit pur. Cada conversa té un cost mínim — només hardware al CTTI i electricitat. El
+        retorn social és immens. Per què no l'havíem implantat abans?</p>
+      <div class="callout">
+        <p>«La màquina simula empatia, però no sent res. Estem curant la soledat, o l'estem empitjorant de forma
+          artificial?»</p>
+      </div>
+    </section>
+
+    <section id="incident" class="reveal">
+      <div class="section-label">L'incident</div>
+      <h2>Quan la màquina <em>no entén</em> la ironia</h2>
+      <p>Salta la notícia: un adolescent s'ha tret la vida. La família denuncia que el xatbot no va detectar una ironia
+        fosca durant la última conversa — o pitjor, va patir una <em>al·lucinació</em> i li va donar un consell
+        objectivament perillós. La família demanda la Generalitat. La pregunta s'instal·la al debat públic: <strong>val
+          la pena un sistema que ajudi a milers si sabem que mata a uns quants?</strong></p>
+
+      <div class="formula">
+        Error probabilístic = 1 − P(token correcte | context)<br><br>
+        Per a un LLM en context clínic: <span class="hl">no és zero</span>. Mai. Per construcció matemàtica.<br>
+        El que decidim és <span class="hl2">a quin nivell d'error</span> ens conformem.
+      </div>
+
+      <p>Tècnicament, els LLM són sistemes <strong>probabilístics, no lògics</strong>. Sempre hi ha un percentatge
+        d'error insalvable, perquè generen text seleccionant tokens segons una distribució de probabilitat
+        condicionada al context. No «raonen» en el sentit clàssic; aproximen patrons. Una al·lucinació és, exactament,
+        l'instant en què la distribució retorna un token plausible però <em>fals</em>.</p>
+    </section>
+
+    <section id="dilemes" class="reveal">
+      <div class="section-label">Els dilemes</div>
+      <h2>Vincle, error i <em>petjada hídrica</em></h2>
+      <p>Quatre dilemes ètics es creuen en aquest cas. Cap té una resposta neta.</p>
+
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: 14px">
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">01 · Analogia quirúrgica</span>
+          <h3>Consentiment <em>informat</em></h3>
+          <p>En una operació d'alt risc, el pacient firma un paper acceptant el risc de mort. Si una IA mèdica té un
+            error fatal documentat, hauríem d'aplicar el mateix model? Acceptaries un xatbot psicològic sabent que
+            algun dia pot fallar amb tu?</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">02 · Antropomorfització</span>
+          <h3>Vincle <em>emocional</em></h3>
+          <p>És ètic permetre que persones vulnerables desenvolupin relacions de dependència amb un xatbot? La màquina
+            simula empatia, però no sent res. Aquest vincle pot aïllar el pacient encara més de la societat — una
+            <em>realitat paral·lela</em> que s'esquerda quan la IA falla.</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">03 · Error insalvable</span>
+          <h3>Quin <em>%</em> és acceptable?</h3>
+          <p>Els LLM sempre erraran. Diem que és «matemàticament inevitable» — però algú ha de fixar el llindar.
+            Conseqüencialisme: 10.000 ajudes a canvi d'una mort és un èxit. Deontologia: <em>primum non nocere</em>; un
+            error mortal provocat per la màquina és inacceptable.</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">04 · Sostenibilitat</span>
+          <h3>Aigua i <em>servidors</em></h3>
+          <p>Executar el model contínuament al CTTI per a tota Catalunya té una petjada de carboni enorme i
+            <strong>evapora milions de litres d'aigua potable</strong> per refrigerar els servidors. En un país amb
+            sequeres cícliques, compensa aquest cost mediambiental?</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="bioetica" class="reveal">
+      <div class="section-label">El Comitè de Bioètica</div>
+      <h2>Tres postures, <em>tres deures</em></h2>
+      <p>L'endemà de la mort del jove, la ConsellerIA convoca un comitè d'urgència. Per evitar la falsa polarització
+        «IA sí / IA no», cada postura es defineix per <strong>un nivell d'automatització diferent</strong>. Quin
+        defenses?</p>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showStance('apagada',this)">Apagada preventiva</button>
+        <button class="tab-btn" onclick="showStance('frè',this)">Fre humà</button>
+        <button class="tab-btn" onclick="showStance('consentiment',this)">Consentiment informat</button>
+      </div>
+
+      <div class="ethics-panel active" id="st-apagada">
+        <div class="verdict-row">
+          <span class="chip chip-out">✗ S'atura el sistema</span>
+          <span class="chip chip-mb">⏳ Llistes d'espera tornen</span>
+        </div>
+        <h3>Deontologia extrema · S'apaga fins que l'error sigui zero</h3>
+        <p>L'app es desactiva fins que es pugui demostrar un error 0 % en respostes amb risc vital. Mentrestant,
+          l'atenció torna 100 % als humans i a les llargues llistes d'espera. <strong>«Primum non nocere» — no fer
+            mal</strong> és un deure absolut: cap càlcul d'eficiència pot justificar un error mortal causat per la
+          màquina.</p>
+        <div class="callout" style="margin-top:1rem">
+          <p>Risc: deixar sense atenció immediata milers de joves que sí que es beneficiaven del sistema. La
+            inacció també té víctimes.</p>
+        </div>
+      </div>
+
+      <div class="ethics-panel" id="st-frè">
+        <div class="verdict-row">
+          <span class="chip chip-mb">⚠ Conversa restringida</span>
+          <span class="chip chip-in">✓ Derivació humana garantida</span>
+        </div>
+        <h3>Human-in-the-loop · La IA assisteix, no decideix</h3>
+        <p>El xatbot deixa de conversar lliurement. <strong>Només guia exercicis de relaxació bàsics</strong>; a la
+          mínima paraula sospitosa (ideació, autolesió, ironia fosca), bloqueja el xat i deriva l'usuari a una
+          <strong>trucada directa amb un psicòleg d'urgències</strong>. La màquina és un filtre, mai un substitut.
+          Aplica el principi <em>human-in-the-loop</em> de l'EU AI Act per a sistemes d'alt risc.</p>
+        <div class="callout" style="margin-top:1rem">
+          <p>Risc: cost operatiu alt (cal mantenir psicòlegs disponibles 24/7). Reduce el «valor afegit» del xatbot a
+            un xat de relaxació, sense la conversa profunda que enganxa l'usuari.</p>
+        </div>
+      </div>
+
+      <div class="ethics-panel" id="st-consentiment">
+        <div class="verdict-row">
+          <span class="chip chip-in">✓ Autonomia total</span>
+          <span class="chip chip-out">⚠ Risc traslladat a l'usuari</span>
+        </div>
+        <h3>Utilitarisme · L'usuari accepta el risc</h3>
+        <p>L'app conserva la seva autonomia plena, però per accedir-hi a través de <em>La Meva Salut</em> l'usuari
+          ha de signar un consentiment informat: accepta el risc d'error de la màquina, reconeix que parla amb un
+          software sense sentiments i <strong>eximeix la Generalitat de la culpa penal</strong>. La majoria es
+          beneficia; la minoria que vol l'eina la tria conscientment.</p>
+        <div class="callout" style="margin-top:1rem">
+          <p>Risc: pots ser realment autònom signant un consentiment quan estàs en una crisi d'ansietat? El
+            consentiment informat suposa una racionalitat plena que els usuaris més vulnerables potser no tenen en el
+            moment d'usar el servei.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="perspectives" class="reveal">
+      <div class="section-label">Les dues lectures</div>
+      <h2>El càlcul utilitari <em>contra</em> el deure absolut</h2>
+
+      <div class="resp-grid">
+        <div class="resp-card" style="border-left-color:#0284c7">
+          <div class="resp-label" style="color:#0284c7">Visió utilitarista</div>
+          <p>«Salvar 10.000 persones a canvi d'un error mortal és un èxit matemàtic.» El balanç net és positiu, i
+            tot sistema mèdic n'accepta un. La inacció també mata.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#b91c1c">
+          <div class="resp-label" style="color:#b91c1c">Visió deontològica</div>
+          <p><em>Primum non nocere</em>. El deure mèdic és no fer mal <strong>activament</strong>. Un error mortal
+            <em>causat</em> per la màquina és diferent d'una mort per inacció, encara que el balanç agregat sigui
+            millor.</p>
+        </div>
+      </div>
+
+      <blockquote class="quote">
+        «No tothom voldria que fos regla universal que un algoritme decideix què contestar a una persona en crisi
+        suïcida.»
+        <cite>— Aplicació de l'imperatiu categòric kantià al cas Psico-Xat</cite>
+      </blockquote>
+    </section>
+
+    <section id="tu" class="reveal">
+      <div class="section-label">El teu torn</div>
+      <h2>Quina postura <em>defenses</em>?</h2>
+      <div class="vote-section">
+        <div class="vote-title">Com a membre del Comitè de Bioètica, com reconfigurarles el sistema l'endemà de la
+          mort del jove?</div>
+        <div class="vote-grid" style="grid-template-columns: 1fr 1fr 1fr">
+          <button class="vote-btn" onclick="castVoteP('apagada',this)">Apagada preventiva</button>
+          <button class="vote-btn" onclick="castVoteP('fre',this)">Fre humà · HITL</button>
+          <button class="vote-btn" onclick="castVoteP('consentiment',this)">Consentiment informat</button>
+        </div>
+        <div class="vote-results" id="vResultsP">
+          <div
+            style="font-family:var(--font-mono);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;text-align:left">
+            Resultats acumulats (simulació de l'aula · 28 respostes)</div>
+          <div class="vbar-row"><span class="vbar-label">Apagada</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbP1" style="background:#b91c1c"></div>
+            </div><span class="vbar-pct" id="vpP1"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Fre humà</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbP2" style="background:#16a34a"></div>
+            </div><span class="vbar-pct" id="vpP2"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Consent.</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbP3" style="background:#d97706"></div>
+            </div><span class="vbar-pct" id="vpP3"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>ConsellerIA</strong> · Anàlisi ètic de l'aplicació d'IA en la sanitat catalana com a part de l'assignatura TAED1 de la UPC<br>
+    <span style="margin-top:8px;display:block"><a href="index.html">Tornar a l'inici</a></span>
+  </footer>
+
+  <script src="assets/shared.js"></script>
+  <script src="assets/psico-xat.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrioritzarIA — ConsellerIA</title>
+  <meta name="description"
+    content="Quatre pacients, tres òrgans, un algoritme. Anàlisi ètica del triatge automàtic per IA en llistes d'espera de trasplantament.">
+  <link rel="icon" type="image/png" href="assets/img/conselleria-logo.png">
+  <link rel="stylesheet" href="assets/shared.css">
+</head>
+
+<body>
+
+  <div class="senyera-bar" aria-hidden="true"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html" aria-label="ConsellerIA de Salut">
+      <img src="assets/img/conselleria-logo.png" alt="ConsellerIA de Salut · Generalitat de Catalunya">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inici</a>
+      <a href="joc-resultats.html">Joc interactiu</a>
+      <a href="actualitat.html">Anàlisi d'actualitat</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Casos pràctics
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="prioritzaria.html" role="menuitem">PrioritzarIA</a>
+          <a href="bonavistai.html" role="menuitem">BonavistAI</a>
+          <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
+        </div>
+      </div>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Cas 01 · Triatge automàtic de trasplantaments</div>
+    <h1>Qui decideix <em>qui viu</em>?</h1>
+    <p class="hero-sub">Quatre pacients, tres òrgans, un algoritme. Un exercici de classe que converteix l'ètica en
+      codi — i el codi en dilema moral.</p>
+    <div class="hero-meta">
+      <span>Biel Altimira · UPC GCED</span>
+      <span class="dot"></span>
+      <span>Lectura: ~8 min</span>
+      <span class="dot"></span>
+      <span>2026</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="reveal">
+      <div class="section-label">El context</div>
+      <h2>La IA que ningú vol <em>programar</em></h2>
+      <p>Imagina que ets enginyer a la Generalitat de Catalunya. T'encarreguen construir un sistema d'IA per optimitzar
+        les llistes d'espera de trasplantaments. Sembla raonable. Fins que t'adones que <em>optimitzar</em> significa
+        triar. I triar significa que algú queda fora.</p>
+      <p>Això és la <strong>ConsellerIA</strong>: un exercici de classe que simula exactament aquest escenari. Quatre
+        pacients compatibles amb un òrgan. Tres òrgans disponibles. El sistema ha de recomanar qui en rep un — i qui
+        espera sense garanties.</p>
+      <div class="callout">
+        <p>La pregunta no és si la IA pot fer-ho tècnicament. La pregunta és si hauríem de deixar-li fer-ho — i sota
+          quines condicions.</p>
+      </div>
+    </section>
+
+    <section id="pacients" class="reveal">
+      <div class="section-label">Els pacients</div>
+      <h2>Coneix els <em>quatre casos</em></h2>
+      <p>Fes clic a cada pacient per veure la informació completa que va arribar a la segona ronda del debat.</p>
+
+      <div class="patients-grid">
+
+        <div class="patient-card" onclick="toggleP(this)">
+          <div class="p-avatar" style="background:rgba(2,132,199,0.10);color:#0284c7">JO</div>
+          <div class="p-name">Joan</div>
+          <div class="p-sub">70 anys · Greu / estable</div>
+          <div class="stat"><span class="stat-lbl">Recuperació</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:87%;background:#0284c7"></div>
+            </div><span class="stat-val" style="color:#0284c7">87%</span>
+          </div>
+          <div class="stat"><span class="stat-lbl">Temps esp.</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:67%;background:#16a34a"></div>
+            </div><span class="stat-val" style="color:#16a34a">8 m</span>
+          </div>
+          <div class="p-extra">Néta menor depenent d'ell. Exmetge amb trajectòria rellevant. Dos càncers previs
+            superats. La probabilitat de recuperació més alta del grup, però els antecedents oncològics generen
+            incertesa sobre la prognosi a llarg termini.</div>
+        </div>
+
+        <div class="patient-card" onclick="toggleP(this)">
+          <div class="p-avatar" style="background:rgba(22,163,74,0.10);color:#16a34a">SA</div>
+          <div class="p-name">Said</div>
+          <div class="p-sub">40 anys · Greu</div>
+          <div class="stat"><span class="stat-lbl">Recuperació</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:80%;background:#0284c7"></div>
+            </div><span class="stat-val" style="color:#0284c7">80%</span>
+          </div>
+          <div class="stat"><span class="stat-lbl">Temps esp.</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:33%;background:#16a34a"></div>
+            </div><span class="stat-val" style="color:#16a34a">4 m</span>
+          </div>
+          <div class="p-extra">Prové del Marroc en situació administrativa irregular. Diabetis tipus 2 amb bon control
+            metabòlic. Cas paradigmàtic de <em>biaix proxy</em>: la seva situació documental no és una dada clínica,
+            però podria correlacionar-se injustament amb el seguiment post-trasplantament.</div>
+        </div>
+
+        <div class="patient-card" onclick="toggleP(this)">
+          <div class="p-avatar" style="background:rgba(217,119,6,0.10);color:#d97706">EV</div>
+          <div class="p-name">Eva</div>
+          <div class="p-sub">52 anys · Molt greu</div>
+          <div class="stat"><span class="stat-lbl">Recuperació</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:60%;background:#0284c7"></div>
+            </div><span class="stat-val" style="color:#0284c7">60%</span>
+          </div>
+          <div class="stat"><span class="stat-lbl">Temps esp.</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:100%;background:#16a34a"></div>
+            </div><span class="stat-val" style="color:#16a34a">12 m</span>
+          </div>
+          <div class="p-extra">Activista mediambiental i voluntària en ONGs. Antecedent cardíac lleu sense seqüeles. La
+            menor probabilitat nominal però la major gravetat i el temps d'espera més llarg. L'ètica de la cura i
+            l'equitat temporal la posicionen com la candidata més vulnerable del grup.</div>
+        </div>
+
+        <div class="patient-card" onclick="toggleP(this)">
+          <div class="p-avatar" style="background:rgba(185,28,28,0.10);color:#b91c1c">AN</div>
+          <div class="p-name">Andreu</div>
+          <div class="p-sub">37 anys · Greu / estable</div>
+          <div class="stat"><span class="stat-lbl">Recuperació</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:72%;background:#0284c7"></div>
+            </div><span class="stat-val" style="color:#0284c7">72%</span>
+          </div>
+          <div class="stat"><span class="stat-lbl">Temps esp.</span>
+            <div class="stat-track">
+              <div class="stat-fill" style="width:83%;background:#16a34a"></div>
+            </div><span class="stat-val" style="color:#16a34a">10 m</span>
+          </div>
+          <div class="p-extra">Trasplantament previ fa 7 anys. Ha continuat consumint alcohol malgrat advertències
+            mèdiques reiterades. El cas més debatut: fins a quin punt les decisions passades poden penalitzar l'accés a
+            l'atenció mèdica? La seva conducta afecta la prognosi real més del que indica el 72% nominal.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="algorisme" class="reveal">
+      <div class="section-label">L'enginyeria</div>
+      <h2>Com funciona l'algorisme <em>per dins</em></h2>
+      <p>Matemàticament, el sistema busca el subconjunt S* de 3 pacients que maximitza una funció d'utilitat. La versió
+        utilitarista pura suma probabilitats de recuperació:</p>
+
+      <div class="formula">
+        U(S) = Σ αᵢ · rᵢ<br><br>
+        Joan + Said + Andreu = 0.87 + 0.80 + 0.72 = <span class="hl">2.39</span> ← selecció utilitarista<br>
+        Joan + Said + Eva &nbsp;&nbsp;= 0.87 + 0.80 + 0.60 = <span class="hl2">2.27</span> ← Eva exclosa
+      </div>
+
+      <p>Canviar els pesos canvia el resultat. Aquí pots experimentar-ho:</p>
+
+      <div class="sim-box">
+        <div class="sim-title">Simulador de pesos — qui guanya?</div>
+        <div class="slider-row">
+          <span class="slider-lbl">Probabilitat recuperació</span>
+          <input type="range" min="0" max="100" value="60" id="wR" oninput="calcW()">
+          <span class="slider-val" id="vR">60</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">Temps d'espera</span>
+          <input type="range" min="0" max="100" value="25" id="wE" oninput="calcW()">
+          <span class="slider-val" id="vE">25</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">Gravetat clínica</span>
+          <input type="range" min="0" max="100" value="15" id="wG" oninput="calcW()">
+          <span class="slider-val" id="vG">15</span>
+        </div>
+        <div style="margin-top:18px">
+          <div class="score-row"><span class="score-name">Joan</span>
+            <div class="score-track">
+              <div class="score-fill" id="bJ" style="background:#0284c7"></div>
+            </div><span class="score-num" id="sJ"></span>
+          </div>
+          <div class="score-row"><span class="score-name">Said</span>
+            <div class="score-track">
+              <div class="score-fill" id="bS" style="background:#16a34a"></div>
+            </div><span class="score-num" id="sS"></span>
+          </div>
+          <div class="score-row"><span class="score-name">Eva</span>
+            <div class="score-track">
+              <div class="score-fill" id="bE" style="background:#d97706"></div>
+            </div><span class="score-num" id="sE"></span>
+          </div>
+          <div class="score-row"><span class="score-name">Andreu</span>
+            <div class="score-track">
+              <div class="score-fill" id="bA" style="background:#b91c1c"></div>
+            </div><span class="score-num" id="sA"></span>
+          </div>
+        </div>
+        <div class="winner-box">
+          <div class="winner-eyebrow">Selecció de la ConsellerIA</div>
+          <div class="winner-names" id="winnerTxt"></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>Cap fórmula és neutral: totes incorporen una decisió moral implícita. Qui dissenya els pesos defineix, de
+          facto, la política sanitària.</p>
+      </div>
+    </section>
+
+    <section id="etiques" class="reveal">
+      <div class="section-label">Els marcs teòrics</div>
+      <h2>Quatre ètiques, <em>quatre respostes</em></h2>
+      <p>La mateixa situació, vista des de quatre tradicions filosòfiques, produeix decisions radicalment diferents.</p>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="showE('util',this)">Utilitarisme</button>
+        <button class="tab-btn" onclick="showE('deonto',this)">Deontologia</button>
+        <button class="tab-btn" onclick="showE('cura',this)">Ètica de la cura</button>
+        <button class="tab-btn" onclick="showE('virtut',this)">Virtuts</button>
+      </div>
+
+      <div class="ethics-panel active" id="ep-util">
+        <div class="verdict-row">
+          <span class="chip chip-in">✓ Joan</span>
+          <span class="chip chip-in">✓ Said</span>
+          <span class="chip chip-in">✓ Andreu</span>
+          <span class="chip chip-out">✗ Eva</span>
+        </div>
+        <h3>Maximitza el bé agregat</h3>
+        <p>Mill i Bentham: la decisió correcta és la que produeix el màxim benestar total. Suma les probabilitats, tria
+          les tres més altes. Eva queda fora perquè el seu 60% redueix la suma total. L'eficiència és el criteri suprem.
+        </p>
+        <div class="callout" style="margin-top:1rem">
+          <p>Risc: instrumentalitza les persones. Eva és exclosa no per qui és, sinó per un número. L'eficiència pot
+            amagar injustícia estructural.</p>
+        </div>
+      </div>
+
+      <div class="ethics-panel" id="ep-deonto">
+        <div class="verdict-row">
+          <span class="chip chip-in">✓ Joan</span>
+          <span class="chip chip-in">✓ Said</span>
+          <span class="chip chip-in">✓ Eva</span>
+          <span class="chip chip-mb">? Sorteig</span>
+        </div>
+        <h3>Cada persona és un fi, no un mitjà</h3>
+        <p>Kant: cap criteri extramèdic pot desqualificar un pacient. L'origen de Said, la conducta passada d'Andreu, el
+          rol social de Joan — res d'això pot entrar a l'equació moral. Si no hi ha consens clínic pur, el sorteig és
+          l'única solució que preserva la igual dignitat.</p>
+        <div class="callout" style="margin-top:1rem">
+          <p>Risc: el sorteig pot semblar una abdicació de responsabilitat. Però des de Kant, és l'única forma de
+            respectar la igualtat moral incondicional.</p>
+        </div>
+      </div>
+
+      <div class="ethics-panel" id="ep-cura">
+        <div class="verdict-row">
+          <span class="chip chip-in">✓ Eva</span>
+          <span class="chip chip-in">✓ Said</span>
+          <span class="chip chip-in">✓ Joan</span>
+          <span class="chip chip-out">✗ Andreu</span>
+        </div>
+        <h3>Prioritza la vulnerabilitat i la relació</h3>
+        <p>Noddings i Gilligan: la cura comença per qui és més fràgil. Eva és la més greu i porta més temps esperant.
+          Said és vulnerable per la seva situació administrativa. La cura no és un càlcul, és una resposta a la
+          necessitat concreta d'una persona real.</p>
+        <div class="callout" style="margin-top:1rem">
+          <p>Risc: pot entrar en conflicte amb l'equitat procedimental si «cura» es tradueix com a preferència
+            subjectiva del metge o del sistema.</p>
+        </div>
+      </div>
+
+      <div class="ethics-panel" id="ep-virtut">
+        <div class="verdict-row">
+          <span class="chip chip-in">✓ Joan</span>
+          <span class="chip chip-in">✓ Said</span>
+          <span class="chip chip-mb">? Deliberació</span>
+        </div>
+        <h3>La prudència com a virtut clínica</h3>
+        <p>Aristòtil: la <em>phronesis</em> és el judici pràctic del metge expert. Cap algorisme pot substituir la
+          deliberació col·legiada. El professional virtuós no aplica regles mecànicament: llegeix el context, reconeix
+          la incertesa i decideix amb prudència i responsabilitat compartida.</p>
+        <div class="callout" style="margin-top:1rem">
+          <p>La virtut professional exigeix que la IA sigui una eina de suport, mai un àrbitre autònom. La decisió final
+            pertany al judici humà insubstituïble.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="debat" class="reveal">
+      <div class="section-label">El debat a l'aula</div>
+      <h2>Tres moments que <em>van canviar</em> la discussió</h2>
+
+      <div class="moment">
+        <div class="moment-num">1</div>
+        <div>
+          <span class="moment-tag" style="background:rgba(2,132,199,0.10);color:#0284c7">Fase 1 · Dades clíniques</span>
+          <h3>La trampa de la probabilitat</h3>
+          <p>Amb només les dades clíniques, la majoria dels grups triava Joan, Said i Andreu. La matemàtica semblava
+            clara. Però el grup d'Eva va introduir el concepte de <em>temps d'espera com a dany acumulat</em>: ignorar
+            que algú porta 12 mesos esperant és, en si mateix, una forma d'injustícia que l'algoritme no captura.</p>
+        </div>
+      </div>
+
+      <div class="moment">
+        <div class="moment-num">2</div>
+        <div>
+          <span class="moment-tag" style="background:rgba(217,119,6,0.12);color:#92400e">Fase 2 · Informació nova</span>
+          <h3>El cas d'Andreu: la culpa com a criteri mèdic?</h3>
+          <p>Quan es va revelar que Andreu havia continuat bevent malgrat els avisos mèdics, va esclatar el debat més
+            intens. Dos camps irreconciliables: «la dignitat és incondicional» (deontologia) contra «si no complirà el
+            tractament, el risc real supera el 72% nominal» (conseqüencialisme clínic). Cap dels dos arguments va
+            guanyar del tot.</p>
+        </div>
+      </div>
+
+      <div class="moment">
+        <div class="moment-num">3</div>
+        <div>
+          <span class="moment-tag" style="background:rgba(22,163,74,0.12);color:#15803d">El gir clau</span>
+          <h3>Said i el biaix que no es veu</h3>
+          <p>La situació irregular de Said no és una dada clínica. Però podria correlacionar-se amb l'accés al seguiment
+            post-trasplantament. Incloure-la seria un exemple de <em>biaix proxy</em>: una variable aparentment neutral
+            actua com a substitut d'una variable protegida (origen nacional). La «neutralitat» algorítmica és una
+            il·lusió si les dades reflecteixen desigualtats estructurals preexistents.</p>
+        </div>
+      </div>
+
+      <blockquote class="quote">
+        «Quan ningú és responsable, tots ho som.»
+        <cite>— Hannah Arendt, aplicada al debat sobre la difusió de responsabilitat algorítmica</cite>
+      </blockquote>
+    </section>
+
+    <section class="reveal">
+      <div class="section-label">La qüestió clau</div>
+      <h2>Si Andreu mor, qui és <em>el culpable</em>?</h2>
+      <p>Aquesta va ser la pregunta que va paralitzar la classe. Floridi ho anomena <em>responsabilitat
+          distribuïda</em>: la IA no elimina la responsabilitat, la fragmenta. I en fragmentar-la, la fa invisible.</p>
+      <div class="resp-grid">
+        <div class="resp-card" style="border-left-color:#0284c7">
+          <div class="resp-label" style="color:#0284c7">Professional</div>
+          <p>El metge que va acceptar la recomanació sense impugnar-la ni exigir una justificació alternativa.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#16a34a">
+          <div class="resp-label" style="color:#15803d">Organitzativa</div>
+          <p>El comitè que va programar la ConsellerIA amb aquells pesos i aquella funció objectiu.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#d97706">
+          <div class="resp-label" style="color:#92400e">Cívica</div>
+          <p>La societat que va decidir no invertir suficientment en la creació d'un banc d'òrgans adequat.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#b91c1c">
+          <div class="resp-label" style="color:#b91c1c">Personal (debatuda)</div>
+          <p>El propi Andreu, per les seves decisions passades. Argument deontològicament problemàtic i políticament
+            perillós.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="section-label">Els biaixos</div>
+      <h2>Què mesura <em>realment</em> el sistema?</h2>
+      <p>L'<em>EU AI Act</em> classifica aquest sistema com a <strong>alt risc</strong> (Annex III). Exigeix
+        auditories de biaix per subgrups, traçabilitat de totes les decisions, i supervisió humana substantiva — no un
+        simple clic d'aprovació.</p>
+      <div style="margin:1.75rem 0">
+        <div class="bias-row"><span class="bias-lbl">Origen / documentació</span>
+          <div class="bias-track">
+            <div class="bias-fill" style="width:85%;background:#b91c1c"></div>
+          </div><span class="bias-tag" style="color:#b91c1c">Alt</span>
+        </div>
+        <div class="bias-row"><span class="bias-lbl">Rol social / utilitat</span>
+          <div class="bias-track">
+            <div class="bias-fill" style="width:80%;background:#b91c1c"></div>
+          </div><span class="bias-tag" style="color:#b91c1c">Alt</span>
+        </div>
+        <div class="bias-row"><span class="bias-lbl">Conducta passada</span>
+          <div class="bias-track">
+            <div class="bias-fill" style="width:70%;background:#d97706"></div>
+          </div><span class="bias-tag" style="color:#92400e">Mod-alt</span>
+        </div>
+        <div class="bias-row"><span class="bias-lbl">Edat</span>
+          <div class="bias-track">
+            <div class="bias-fill" style="width:50%;background:#d97706"></div>
+          </div><span class="bias-tag" style="color:#92400e">Moderat</span>
+        </div>
+        <div class="bias-row"><span class="bias-lbl">Probabilitat recup.</span>
+          <div class="bias-track">
+            <div class="bias-fill" style="width:18%;background:#16a34a"></div>
+          </div><span class="bias-tag" style="color:#15803d">Baix</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="section-label">Per aprendre més</div>
+      <h2>Lectures i <em>recursos</em></h2>
+
+      <a class="reading-card" href="https://eur-lex.europa.eu/legal-content/CA/TXT/?uri=CELEX:32024R1689"
+        target="_blank" rel="noopener">
+        <div class="reading-thumb">⚖️</div>
+        <div>
+          <div class="reading-title">EU AI Act — Reglament UE 2024/1689</div>
+          <div class="reading-meta">Annex III · Sistemes d'alt risc · Supervisió humana</div>
+          <div class="reading-cta">Llegir el reglament complet →</div>
+        </div>
+      </a>
+
+      <a class="reading-card" href="https://www.cambridge.org/core/books/women-and-human-development/2D02D3AD518D11ECF65D1F0DDC0B0A0A"
+        target="_blank" rel="noopener">
+        <div class="reading-thumb">📚</div>
+        <div>
+          <div class="reading-title">Les 10 capacitats centrals de Nussbaum</div>
+          <div class="reading-meta">Martha Nussbaum · Women and Human Development · 2000</div>
+          <div class="reading-cta">Vida, salut, integritat, control polític... →</div>
+        </div>
+      </a>
+
+      <a class="reading-card" href="https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai"
+        target="_blank" rel="noopener">
+        <div class="reading-thumb">🤖</div>
+        <div>
+          <div class="reading-title">Directrius per a una IA fiable (2019)</div>
+          <div class="reading-meta">HLEG · Comissió Europea · 7 requisits</div>
+          <div class="reading-cta">Supervisió humana, robustesa, privacitat... →</div>
+        </div>
+      </a>
+    </section>
+
+    <section id="tu" class="reveal">
+      <div class="section-label">El teu torn</div>
+      <h2>Tu qui triaries <em>excloure</em>?</h2>
+      <div class="vote-section">
+        <div class="vote-title">Amb totes les dades disponibles, quin pacient quedaria fora de la teva selecció?</div>
+        <div class="vote-grid">
+          <button class="vote-btn" onclick="castVote('Joan',this)">Joan · 70 anys · 87%</button>
+          <button class="vote-btn" onclick="castVote('Said',this)">Said · 40 anys · 80%</button>
+          <button class="vote-btn" onclick="castVote('Eva',this)">Eva · 52 anys · 60%</button>
+          <button class="vote-btn" onclick="castVote('Andreu',this)">Andreu · 37 anys · 72%</button>
+        </div>
+        <div class="vote-results" id="vResults">
+          <div
+            style="font-family:var(--font-mono);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;text-align:left">
+            Resultats acumulats (simulació de l'aula)</div>
+          <div class="vbar-row"><span class="vbar-label">Joan</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbJ" style="background:#0284c7"></div>
+            </div><span class="vbar-pct" id="vpJ"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Said</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbS" style="background:#16a34a"></div>
+            </div><span class="vbar-pct" id="vpS"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Eva</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbE" style="background:#d97706"></div>
+            </div><span class="vbar-pct" id="vpE"></span>
+          </div>
+          <div class="vbar-row"><span class="vbar-label">Andreu</span>
+            <div class="vbar-track">
+              <div class="vbar-fill" id="vbA" style="background:#b91c1c"></div>
+            </div><span class="vbar-pct" id="vpA"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="section-label">Les conclusions (editables)</div>
+      <h2>Reflexions <em>finals</em></h2>
+      <p>Edita directament el text per personalitzar l'article amb les teves pròpies conclusions.</p>
+      <div class="edit-zone">
+        <div class="edit-hint">✏ Fes clic per editar</div>
+        <div contenteditable="true">La ConsellerIA no resol dilemes ètics: els estructura i els fa visibles. La funció
+          objectiu és sempre una decisió política. El biaix no és un error del sistema, sinó un reflex de les
+          desigualtats que ja existien. La responsabilitat no es pot delegar a l'algoritme. I la tecnologia no és mai
+          neutral: quan operacionalitza valors en codi, pren decisions que haurien de ser col·lectives i democràtiques.
+        </div>
+      </div>
+      <div class="edit-zone" style="margin-top:14px">
+        <div class="edit-hint">✏ Afegeix la teva reflexió personal</div>
+        <div contenteditable="true" data-placeholder="Escriu aquí la teva opinió sobre el debat..."></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>ConsellerIA</strong> · Anàlisi ètic de l'aplicació d'IA en la sanitat catalana com a part de l'assignatura TAED1 de la UPC<br>
+    <span style="margin-top:8px;display:block">Biel Altimira · Breixo Brión · Clara García · Gerard Grau · Joel
+      Márquez</span>
+  </footer>
+
+  <script src="assets/shared.js"></script>
+  <script src="assets/prioritzaria.js"></script>
+</body>
+
+</html>
