@@ -47,8 +47,7 @@
   <header class="hero">
     <div class="hero-eyebrow">Cas 01 · Triatge automàtic de trasplantaments</div>
     <h1>Qui decideix <em>qui viu</em>?</h1>
-    <p class="hero-sub">Quatre pacients, tres òrgans, un algoritme. Un exercici de classe que converteix l'ètica en
-      codi — i el codi en dilema moral.</p>
+    <p class="hero-sub">Quatre pacients, tres òrgans, un algoritme. Una proposta de cas que converteix l'ètica en codi — i el codi en debat.</p>
     <div class="hero-meta">
       <span>Equip ConsellerIA · UPC GCED</span>
       <span class="dot"></span>
@@ -66,7 +65,7 @@
       <p>Imagina que ets enginyer a la Generalitat de Catalunya. T'encarreguen construir un sistema d'IA per optimitzar
         les llistes d'espera de trasplantaments. Sembla raonable. Fins que t'adones que <em>optimitzar</em> significa
         triar. I triar significa que algú queda fora.</p>
-      <p>Això és la <strong>ConsellerIA</strong>: un exercici de classe que simula exactament aquest escenari. Quatre
+      <p>Això és la <strong>ConsellerIA</strong>: un debat que simula exactament aquest escenari. Quatre
         pacients compatibles amb un òrgan. Tres òrgans disponibles. El sistema ha de recomanar qui en rep un — i qui
         espera sense garanties.</p>
       <div class="callout">
@@ -164,8 +163,7 @@
     <section id="algorisme" class="reveal">
       <div class="section-label">L'enginyeria</div>
       <h2>Com funciona l'algorisme <em>per dins</em></h2>
-      <p>Matemàticament, el sistema busca el subconjunt S* de 3 pacients que maximitza una funció d'utilitat. La versió
-        utilitarista pura suma probabilitats de recuperació:</p>
+      <p>Matemàticament, el sistema busca el subconjunt S* de 3 pacients que maximitza una funció segons el criteri emprat a la decisió. Un exemple de funció simple seria a cada factor rᵢ se li assigna un pes αᵢ i es sumen les ponderacions. Una versió utilitarista simple sumaria probabilitats de recuperació αᵢ=0 per qualsevol i excepte "Probabilitat de recuperació".</p>
 
       <div class="formula">
         U(S) = Σ αᵢ · rᵢ<br><br>
@@ -382,7 +380,7 @@
       <h2>Què mesura <em>realment</em> el sistema?</h2>
       <p>L'<em>EU AI Act</em> classifica aquest sistema com a <strong>alt risc</strong> (Annex III). Exigeix
         auditories de biaix per subgrups, traçabilitat de totes les decisions, i supervisió humana substantiva — no un
-        simple clic d'aprovació.</p>
+        simple clic d'aprovació. Veiem el “nivell de risc ètic” de cada variable:</p>
       <div style="margin:1.75rem 0">
         <div class="bias-row"><span class="bias-lbl">Origen / documentació</span>
           <div class="bias-track">
