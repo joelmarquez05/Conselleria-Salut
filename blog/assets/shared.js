@@ -81,6 +81,19 @@
     if (!btn) return;
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
+      var youtubeId = frame.dataset.youtube;
+      if (youtubeId) {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + youtubeId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3';
+        iframe.title = 'Comunicat oficial · ConsellerIA';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.loading = 'lazy';
+        var poster = frame.querySelector('.video-poster');
+        if (poster) poster.replaceWith(iframe);
+        frame.classList.add('played');
+        return;
+      }
       frame.classList.add('played');
       var quote = frame.querySelector('.video-quote');
       var cite = frame.querySelector('.video-cite');
