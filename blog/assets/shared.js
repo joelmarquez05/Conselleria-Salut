@@ -164,6 +164,50 @@
 })();
 
 (function () {
+  var conn = navigator.connection;
+  if (conn && (conn.saveData || /2g/.test(conn.effectiveType || ''))) return;
+  var prefetched = {};
+  function prefetch(href) {
+    if (!href || prefetched[href]) return;
+    prefetched[href] = true;
+    var link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = href;
+    link.as = 'document';
+    document.head.appendChild(link);
+  }
+  function harvest() {
+    document.querySelectorAll('.nav-links a[href], .card-link[href]').forEach(function (a) {
+      var url;
+      try { url = new URL(a.href, location.href); } catch (_) { return; }
+      if (url.origin !== location.origin) return;
+      if (url.pathname === location.pathname) return;
+      prefetch(url.pathname + url.search);
+    });
+  }
+  var schedule = window.requestIdleCallback || function (cb) { return setTimeout(cb, 600); };
+  schedule(harvest, { timeout: 2000 });
+  document.addEventListener('mouseover', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (_) { return; }
+    if (url.origin !== location.origin) return;
+    if (url.pathname === location.pathname) return;
+    prefetch(url.pathname + url.search);
+  }, { passive: true });
+  document.addEventListener('touchstart', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (_) { return; }
+    if (url.origin !== location.origin) return;
+    if (url.pathname === location.pathname) return;
+    prefetch(url.pathname + url.search);
+  }, { passive: true });
+})();
+
+(function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return;
   document.addEventListener('click', function (e) {
