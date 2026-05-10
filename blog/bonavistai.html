@@ -6,12 +6,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ètica a la ConsellerIA de Salut</title>
   <meta name="description"
-    content="L'eficiència de la IA i el dret a un diagnòstic just: anàlisi del biaix algorítmic en el cribratge de retinopatia diabètica.">
+    content="L'eficiència de la IA i el dret a un diagnòstic just. Anàlisi del biaix algorítmic en el cribratge de retinopatia diabètica.">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/shared.css">
+  <style>
+    .quiz-prog {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .quiz-question {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .quiz-options .vote-btn {
+      padding: 1rem;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.4;
+    }
+
+    .quiz-result {
+      text-align: center;
+      padding: 0.75rem 0;
+    }
+
+    .quiz-score {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 0.4rem;
+    }
+
+    .quiz-score-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .quiz-msg {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--text);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 1.75rem 0 1rem;
+    }
+
+    .impact-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: var(--r-md);
+      padding: 1.1rem 1rem;
+      text-align: center;
+    }
+
+    .impact-card.muted {
+      border-top-color: var(--border-2);
+    }
+
+    .impact-num {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .impact-card.alert .impact-num {
+      color: var(--accent);
+    }
+
+    .impact-lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 560px) {
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-options .vote-btn {
+        min-height: 52px;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-score {
+        font-size: 44px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -46,13 +174,12 @@
 
   <header class="hero">
     <div class="hero-eyebrow">Cas 02 · Cribratge ocular automàtic</div>
-    <h1>Bonavist<em>AI</em>: l'eficiència que <em>no veu</em> a tothom igual.</h1>
-    <p class="hero-sub">Una IA detecta retinopatia diabètica en segons. Redueix les llistes d'espera un 80 %. Però falla
-      un 15 % més en pacients d'origen asiàtic. El cas d'en Li.</p>
+    <h1>Bonavist<em>AI</em> no <em>hi veu</em> igual a tothom.</h1>
+    <p class="hero-sub">Una IA detecta retinopatia diabètica en segons i retalla un 80 % les llistes d'espera. El
+      problema arriba quan saps que falla un 15 % més en pacients d'origen asiàtic. Aquesta és la història d'en Li i el
+      motiu pel qual cap eficiència agregada justifica un dany irreversible.</p>
     <div class="hero-meta">
-      <span>Equip ConsellerIA · UPC GCED</span>
-      <span class="dot"></span>
-      <span>Lectura: ~7 min</span>
+      <span>Lectura ~10 min</span>
       <span class="dot"></span>
       <span>2026</span>
     </div>
@@ -63,29 +190,30 @@
     <section id="context" class="reveal">
       <div class="section-label">El context</div>
       <h2>Una IA real, <em>no una hipòtesi</em></h2>
-      <p>El 2023, l'<strong>Agència de Qualitat i Avaluació Sanitàries de Catalunya (AQuAS)</strong> va obrir una
-        consulta pública al mercat per contractar solucions d'IA per al cribratge de retinopatia diabètica a l'atenció
-        primària, amb una licitació estimada en 340.000 € i finançament del Pla de Recuperació, Transformació i
-        Resiliència (NextGenerationEU). En paral·lel, grups de recerca catalans ja publicaven estudis avaluant aquests
-        sistemes. <em>BonavistAI</em> és el model d'aquest cas: una IA instal·lada als CAPs que analitza retinografies
-        en pocs segons i decideix qui derivar a l'oftalmòleg.</p>
-      <p>En <strong>Li</strong> té 70 anys, és d'origen xinès i viu a l'Eixample des de fa quaranta anys. És diabètic, i
-        necessita controls anuals. Fins ara les llistes d'espera per veure un especialista eren de mesos; amb el nou
-        sistema, el diagnòstic li arriba a l'instant al seu mateix ambulatori. La màquina li diu que el seu fons d'ull
-        està «perfecte» i marxa cap a casa confiant plenament en la tecnologia.</p>
+      <p>El cas BonavistAI no surt del no-res. El 2023, l'<strong>Agència de Qualitat i Avaluació Sanitàries de
+          Catalunya (AQuAS)</strong> va obrir una consulta pública per contractar solucions d'IA per al cribratge de
+        retinopatia diabètica a l'atenció primària. En paral·lel, grups de recerca catalans publicaven articles avaluant
+        aquests sistemes. La idea és senzilla i atractiva. Una xarxa neural als CAPs analitza retinografies en pocs
+        segons i decideix quins pacients passen a l'oftalmòleg.</p>
+      <p>Sobre el paper, els números fan bona pinta. Llistes d'espera retallades un 80 %, diagnòstic immediat al mateix
+        ambulatori i oftalmòlegs alliberats per als casos complexos. Tothom hi guanya. Almenys, en teoria.</p>
+      <p><strong>En Li</strong> té 70 anys, és d'origen xinès i viu a l'Eixample des de fa quaranta anys. És
+        diabètic i necessita controls anuals. La màquina li diu que el seu fons d'ull està «perfecte» i marxa cap a casa
+        confiant plenament en la tecnologia. Mesos més tard perd visió i ningú entén per què.</p>
       <div class="callout">
-        <p>«La intel·ligència artificial ja diagnostica amb una precisió igual o superior a la dels professionals.
-          Menys estetoscopis i més targetes gràfiques.» — declaracions atribuïdes a la consellera el 2025.</p>
+        <p>«La intel·ligència artificial ja diagnostica amb una precisió igual o superior a la dels professionals.» —
+          declaracions atribuïdes a la consellera el 2025.</p>
       </div>
     </section>
 
     <section id="biaix" class="reveal">
       <div class="section-label">El biaix</div>
       <h2>Quan la <em>pigmentació de l'iris</em> importa més que el diagnòstic</h2>
-      <p>El sistema s'ha entrenat majoritàriament amb retinografies de pacients d'origen europeu. La major
-        <strong>pigmentació ocular</strong> (concentració de melanina) en persones d'origen asiàtic genera un contrast
-        diferent que l'algorisme no interpreta bé. La taxa de falsos negatius creix. La precisió del sistema és del
-        <strong>94 % en pacients europeus</strong> i baixa al <strong>79 % en pacients d'origen asiàtic</strong>.</p>
+      <p>BonavistAI s'ha entrenat majoritàriament amb retinografies de pacients d'origen europeu. La major
+        <strong>pigmentació ocular</strong> en persones d'origen asiàtic genera un contrast diferent que l'algorisme no
+        interpreta bé. La taxa de falsos negatius creix considerablement. La precisió del sistema és del
+        <strong>94 % en pacients europeus</strong> i baixa al <strong>79 % en pacients d'origen asiàtic</strong>.
+      </p>
 
       <div style="margin:1.75rem 0">
         <div class="bias-row"><span class="bias-lbl">Pacients europeus</span>
@@ -100,20 +228,60 @@
         </div>
       </div>
 
-      <div class="formula">
-        Δ precisió = 94 % − 79 % = <span class="hl">15 punts</span> de bretxa<br>
-        Falsos negatius (asiàtics) ≈ <span class="hl2">3×</span> els d'europeus per cada 100 cribratges
+      <p>En Li ha caigut en aquesta «bretxa d'equitat» com a fals negatiu. Una oftalmòloga de l'hospital de referència
+        s'adona, mesos més tard, que el seu fons d'ull no estava bé. Per a ell, l'error es paga en pèrdua de visió. Un
+        dany biològic <strong>irreversible</strong> que ni el pacient ni el professional havien identificat a temps.</p>
+    </section>
+
+    <section id="impacte" class="reveal">
+      <div class="section-label">L'impacte real</div>
+      <h2>Quants <em>Lis</em> hi ha cada any?</h2>
+      <p>Quan parlem de «biaix algorítmic» sona abstracte. Però els números traduïts a persones
+        canvien la conversa. Mou els controls del simulador i mira com varia el nombre de pacients que el sistema
+        deixa sense detectar a Catalunya, comparant els dos grups.</p>
+
+      <div class="sim-box">
+        <div class="sim-title">Simulador de la bretxa</div>
+
+        <div class="slider-row">
+          <span class="slider-lbl">Cribratges anuals</span>
+          <input type="range" id="s-cribratges" min="20000" max="300000" step="10000" value="100000">
+          <span class="slider-val" id="s-cribratges-v">100.000</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">Pacients d'origen asiàtic</span>
+          <input type="range" id="s-asiatics" min="3" max="25" step="1" value="8">
+          <span class="slider-val" id="s-asiatics-v">8 %</span>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card muted">
+            <div class="impact-num" id="o-fn-eur">5.520</div>
+            <div class="impact-lbl">Falsos negatius<br>europeus</div>
+          </div>
+          <div class="impact-card alert">
+            <div class="impact-num" id="o-fn-asi">1.680</div>
+            <div class="impact-lbl">Falsos negatius<br>asiàtics</div>
+          </div>
+          <div class="impact-card alert">
+            <div class="impact-num" id="o-excedent">1.200</div>
+            <div class="impact-lbl">Excedent<br>de la bretxa</div>
+          </div>
+        </div>
       </div>
 
-      <p>En Li ha entrat en aquesta «bretxa d'equitat» com a fals negatiu. Una oftalmòloga de l'hospital de referència
-        s'adona que el seu fons d'ull no estava bé. Per a ell, l'error es paga en pèrdua de visió: un dany biològic
-        <strong>irreversible</strong> que ni el pacient ni el professional no havien identificat.</p>
+      <div class="callout" style="margin-top:1.5rem">
+        <p>«Si el sistema fos equitatiu, els pacients asiàtics tindrien la mateixa taxa de fals negatiu que la resta.
+          L'excedent són els <span id="o-excedent-li">1.200</span> pacients que cada any es queden sense diagnòstic
+          només perquè la IA mira pitjor un iris més pigmentat.» — posant números al biaix.</p>
+      </div>
     </section>
 
     <section id="nivells" class="reveal">
       <div class="section-label">L'anàlisi</div>
       <h2>Tres nivells, <em>tres preguntes</em></h2>
-      <p>El cas no es pot reduir a una sola dimensió. Cada nivell d'anàlisi exposa un conflicte de valors diferent.</p>
+      <p>El cas no es pot reduir a una sola dimensió. Cada escala d'anàlisi exposa un conflicte de valors diferent i
+        força a posar nom als principis que entren en tensió.</p>
 
       <div class="tab-row">
         <button class="tab-btn active" onclick="showLevel('micro',this)">Micro · pacient</button>
@@ -127,10 +295,10 @@
           <span class="chip chip-out">✗ Dany irreversible</span>
         </div>
         <h3>Dignitat, autonomia i consentiment informat</h3>
-        <p>Si un sistema probabilístic condiciona el judici clínic, té dret en Li a saber que el seu diagnòstic prové
-          d'un algorisme amb biaixos documentats? La <strong>Llei 29/2010</strong> obliga l'Administració a oferir una
-          informació «objectiva, completa i veraç» — no informar-lo seria vulnerar aquest deure i, més greu, el
-          principi ètic subjacent. La irreversibilitat del dany trenca el càlcul utilitari habitual: un cop perduda la
+        <p>Si un sistema probabilístic condiciona el judici clínic, en Li té dret a saber que el seu diagnòstic prové
+          d'un algorisme amb biaixos documentats. La <strong>Llei 29/2010</strong> obliga l'Administració a oferir una
+          informació «objectiva, completa i veraç». No informar-lo seria vulnerar aquest deure i, més greu encara, el
+          principi ètic subjacent. La irreversibilitat del dany trenca el càlcul utilitari habitual. Un cop perduda la
           visió, no es compensa amb cap eficiència administrativa.</p>
       </div>
 
@@ -141,12 +309,13 @@
         </div>
         <h3>Biaix d'automatització i el problema de les moltes mans</h3>
         <p>El metge del CAP valida desenes de casos per hora. Si la màquina marca en Li com a «sa», la supervisió humana
-          es torna formal. És el <em>biaix d'automatització</em>. La cadena de responsabilitat queda diluïda:
+          es torna formal. És el <em>biaix d'automatització</em>. La cadena de responsabilitat queda diluïda perquè
           l'administració ha contractat un sistema amb dades poc diverses, els enginyers no han garantit
-          representativitat, i el metge valida per inèrcia. <strong>Dennis Thompson</strong> ho va anomenar el
-          <em>problema de les moltes mans</em>; <strong>Mark Coeckelbergh</strong> ho ha traslladat als sistemes d'IA
+          representativitat i el metge valida per inèrcia. <strong>Dennis Thompson</strong> ho va anomenar el
+          <em>problema de les moltes mans</em> i <strong>Mark Coeckelbergh</strong> ho ha traslladat als sistemes d'IA
           actuals. La Llei 29/2010 situa la responsabilitat en l'òrgan que contracta, així que un error sistemàtic per
-          biaix és <strong>negligència institucional</strong>.</p>
+          biaix és <strong>negligència institucional</strong>.
+        </p>
       </div>
 
       <div class="ethics-panel" id="lvl-macro">
@@ -156,26 +325,38 @@
         </div>
         <h3>Sobirania tecnològica, RGPD i petjada ambiental</h3>
         <p>Comprar dades clíniques d'hospitals xinesos per re-entrenar el model és la solució aparentment fàcil. Però
-          xoca amb el <strong>RGPD</strong> (articles 45-46): la Xina no té decisió d'adequació, i les dades de salut
-          són categoria especial (art. 9). Comprar-les sense un marc contractual equivalent al RGPD és, amb molta
+          xoca de ple amb el <strong>RGPD</strong> (articles 45-46). La Xina no té decisió d'adequació i les dades de
+          salut són categoria especial (art. 9). Comprar-les sense un marc contractual equivalent al RGPD és, amb molta
           probabilitat, <strong>contrari al dret europeu</strong>. A més, cada cicle de re-entrenament té un cost
-          energètic i hídric: l'Annex del paper estima fins a 10⁴ litres d'aigua per cicle. La via raonable és la
-          <strong>recollida equitativa interna</strong> de dades a Catalunya.</p>
+          energètic i hídric que l'Annex del paper estima fins a 10⁴ litres d'aigua per cicle. La via raonable és la
+          <strong>recollida equitativa interna</strong> de dades a Catalunya, amb consentiment explícit dels pacients.
+        </p>
       </div>
+    </section>
+
+    <section id="auto-biaix" class="reveal">
+      <div class="section-label">Et passa a tu</div>
+      <h2>El biaix d'automatització <em>també ets tu</em></h2>
+      <p>El biaix d'automatització no és una falla puntual del metge del CAP. És una tendència humana general que
+        s'amplifica quan estem cansats, saturats o quan la màquina sembla sempre encertar. Aquest test breu simula
+        quatre situacions del dia a dia. En totes hauries de revisar la decisió de la IA. Quina és la teva resposta
+        natural?</p>
+
+      <div class="sim-box" id="quiz-stage" style="min-height:280px"></div>
     </section>
 
     <section id="tensions" class="reveal">
       <div class="section-label">Tensions ètiques</div>
       <h2>Quatre lectures, <em>un mateix dilema</em></h2>
       <p>El debat a classe va polaritzar-se entre el conseqüencialisme (80 % menys de llistes d'espera) i la
-        deontologia (igual deure de protecció per a tothom). L'ètica de la cura va matisar; les virtuts van demanar
+        deontologia (igual deure de protecció per a tothom). L'ètica de la cura va matisar i les virtuts van demanar
         prudència.</p>
 
       <div class="resp-grid">
         <div class="resp-card" style="border-left-color:#0284c7">
           <div class="resp-label" style="color:#0284c7">Utilitarisme</div>
-          <p><strong>Mantenir.</strong> El benestar del 94 % justifica l'error de la minoria. L'eficiència agregada
-            té prioritat.</p>
+          <p><strong>Mantenir.</strong> El benestar del 94 % justifica l'error de la minoria. L'eficiència agregada té
+            prioritat.</p>
         </div>
         <div class="resp-card" style="border-left-color:#b91c1c">
           <div class="resp-label" style="color:#b91c1c">Deontologia</div>
@@ -184,40 +365,45 @@
         </div>
         <div class="resp-card" style="border-left-color:#d97706">
           <div class="resp-label" style="color:#92400e">Ètica de la cura</div>
-          <p><strong>Condicionat.</strong> No es pot sacrificar el cas particular a l'estadística. Cal reforçar la
-            validació humana en grups vulnerables.</p>
+          <p><strong>Condicionat.</strong> No es pot sacrificar el cas particular a l'estadística, però tampoc negar
+            els guanys sistèmics que aporta al conjunt.</p>
         </div>
         <div class="resp-card" style="border-left-color:#16a34a">
           <div class="resp-label" style="color:#15803d">Virtuts</div>
-          <p><strong>Prudència.</strong> El bon professional cultiva l'excel·lència, no aplica recomanacions de la
-            màquina per inèrcia. La phronesis és insubstituïble.</p>
+          <p><strong>Prudència.</strong> El bon professional cultiva l'excel·lència i no aplica recomanacions de la
+            màquina per inèrcia. La <em>phronesis</em> és insubstituïble.</p>
         </div>
       </div>
 
-      <blockquote class="quote">
-        «No es pot sacrificar el cas particular a l'estadística, però tampoc negar els guanys sistèmics que el sistema
-        aporta al conjunt.»
-        <cite>— Síntesi de l'ètica de la cura, debat de l'aula</cite>
-      </blockquote>
+      <p style="margin-top:1.5rem">Dos elements van resultar especialment determinants en el debat. <strong>La
+          irreversibilitat del dany biològic</strong> que pot causar un fals negatiu i <strong>la responsabilitat
+          distribuïda</strong> entre administració, enginyers i professionals que dilueix la rendició de comptes quan
+        algun cas com el d'en Li acaba a una urgència oftalmològica.</p>
+
+      <div class="callout">
+        <p>«No es pot sacrificar el cas particular a l'estadística, però tampoc negar els guanys sistèmics que el
+          sistema aporta al conjunt.» — síntesi de l'ètica de la cura, debat de l'aula.</p>
+      </div>
     </section>
 
     <section id="decisio" class="reveal">
       <div class="section-label">La decisió adoptada</div>
       <h2>Cinc condicions, <em>una postura intermèdia</em></h2>
-      <p>Després del debat, optem per mantenir BonavistAI <strong>com a eina de suport, mai com a decisor autònom</strong>,
-        sota cinc condicions innegociables:</p>
+      <p>Després del debat, vam optar per mantenir BonavistAI <strong>com a eina de suport, mai com a decisor
+          autònom</strong>, sota cinc condicions innegociables.</p>
 
       <div class="card-grid" style="grid-template-columns: 1fr; gap: 14px">
         <div class="card-link" style="cursor:default">
           <span class="card-tag">01 · Validació humana efectiva</span>
-          <p>Revisió clínica documentada i auditable per cada cas. El temps assignat al professional ha de permetre una
+          <p>Revisió clínica documentada i auditable de cada cas. El temps assignat al professional ha de permetre una
             verificació real, no una signatura per inèrcia.</p>
         </div>
         <div class="card-link" style="cursor:default">
           <span class="card-tag">02 · Avís explícit als grups de risc</span>
-          <p>Pacients de subgrups amb precisió documentadament inferior han de poder sol·licitar una <strong>segona
-              lectura humana independent</strong>. La transparència sobre les limitacions del sistema forma part del
-            deure d'informació (Llei 29/2010).</p>
+          <p>Els pacients de subgrups amb precisió documentadament inferior han de poder sol·licitar una
+            <strong>segona lectura humana independent</strong>. La transparència sobre les limitacions del sistema
+            forma part del deure d'informació (Llei 29/2010).
+          </p>
         </div>
         <div class="card-link" style="cursor:default">
           <span class="card-tag">03 · Recollida equitativa interna</span>
@@ -237,9 +423,57 @@
       </div>
 
       <div class="callout" style="margin-top:1.5rem">
-        <p><strong>Principis ètics que fonamenten la decisió:</strong> dignitat humana, no maleficència, equitat,
-          transparència, sostenibilitat i responsabilitat distribuïda amb traçabilitat efectiva.</p>
+        <p>Els principis ètics que fonamenten la decisió són dignitat humana, no maleficència, equitat, transparència,
+          sostenibilitat i responsabilitat distribuïda amb traçabilitat efectiva.</p>
       </div>
+    </section>
+
+    <section id="petjada" class="reveal">
+      <div class="section-label">Petjada ambiental</div>
+      <h2>Quanta aigua <em>beu</em> Bonavist<em>AI</em>?</h2>
+      <p>Una de les solucions «fàcils» al biaix és re-entrenar el model amb més dades diverses. Però cada cicle té un
+        cost energètic i hídric que sovint queda fora del debat. L'estimació de l'Annex del paper, basada en
+        Luccioni et al. i en dades sectorials de fabricació de semiconductors, dona una aproximació prou clara per
+        decidir amb les cartes a sobre la taula.</p>
+
+      <div class="sim-box">
+        <div class="sim-title">Estimació hídrica anual</div>
+
+        <div class="slider-row">
+          <span class="slider-lbl">Cribratges anuals</span>
+          <input type="range" id="p-cribratges" min="20000" max="300000" step="10000" value="100000">
+          <span class="slider-val" id="p-cribratges-v">100.000</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">Cicles de re-entrenament</span>
+          <input type="range" id="p-cicles" min="0" max="3" step="1" value="1">
+          <span class="slider-val" id="p-cicles-v">1</span>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card muted">
+            <div class="impact-num" id="p-oper">180 L</div>
+            <div class="impact-lbl">Operació<br>(inferència)</div>
+          </div>
+          <div class="impact-card muted">
+            <div class="impact-num" id="p-retr">10.000 L</div>
+            <div class="impact-lbl">Re-entrenament<br>(cicles)</div>
+          </div>
+          <div class="impact-card alert">
+            <div class="impact-num" id="p-tot">10.180 L</div>
+            <div class="impact-lbl">Total estimat<br>anual</div>
+          </div>
+        </div>
+
+        <p style="font-size:13.5px;color:var(--muted);margin-top:1rem;margin-bottom:0">
+          Equivalència aproximada · <strong id="p-equiv">170 dutxes de 5 min</strong>
+        </p>
+      </div>
+
+      <p>La conclusió de l'annex és tranquil·litzadora. El cost hídric d'operació anual és moderat i assumible,
+        comparat amb altres consums estructurals del sistema sanitari. A priori, cap argument ambiental hauria de ser
+        excusa per no corregir el biaix. El vertader problema, doncs, no és la viabilitat tècnica sinó garantir equitat,
+        transparència i responsabilitat institucional.</p>
     </section>
 
     <section id="tu" class="reveal">
