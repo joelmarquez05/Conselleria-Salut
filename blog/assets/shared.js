@@ -17,10 +17,10 @@
 })();
 
 (function () {
-  var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  if (current === '') current = 'index.html';
+  var path = (location.pathname.split('/').pop() || '').toLowerCase();
+  var current = path.replace(/\.html$/, '') || 'index';
   document.querySelectorAll('.nav-links a').forEach(function (a) {
-    var href = (a.getAttribute('href') || '').toLowerCase();
+    var href = (a.getAttribute('href') || '').toLowerCase().replace(/\.html$/, '');
     if (href === current) {
       a.classList.add('active');
       var dropdown = a.closest('.nav-dropdown');
@@ -160,5 +160,31 @@
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeMenu();
+  });
+})();
+
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href) return;
+    if (a.target && a.target !== '_self') return;
+    if (a.hasAttribute('download')) return;
+    if (/^(mailto:|tel:|javascript:|#)/i.test(href)) return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (_) { return; }
+    if (url.origin !== location.origin) return;
+    if (url.pathname === location.pathname && url.search === location.search) return;
+    e.preventDefault();
+    document.body.classList.add('page-leaving');
+    setTimeout(function () { location.href = a.href; }, 170);
+  });
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) document.body.classList.remove('page-leaving');
   });
 })();
