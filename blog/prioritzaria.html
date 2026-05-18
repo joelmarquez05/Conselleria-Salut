@@ -24,8 +24,21 @@
     </a>
     <div class="nav-links">
       <a href="index.html">Inici</a>
-      <a href="joc-resultats.html">Joc interactiu</a>
-      <a href="actualitat.html">Anàlisi d'actualitat</a>
+      <a href="joc-resultats.html">Activitats inicials</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Anàlisi d'actualitat
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="actualitat.html#noticies" role="menuitem">Notícies</a>
+          <a href="actualitat.html#marc-legal" role="menuitem">Marc legal</a>
+          <a href="actualitat.html#marc-etic" role="menuitem">Marc ètic</a>
+        </div>
+      </div>
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
           Casos pràctics
@@ -40,6 +53,7 @@
           <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
         </div>
       </div>
+      <a href="costos.html">Impacte</a>
       <a href="conclusions.html">Conclusions</a>
     </div>
   </nav>
@@ -47,7 +61,7 @@
   <header class="hero">
     <div class="hero-eyebrow">Cas 01 · Triatge automàtic de trasplantaments</div>
     <h1>Qui decideix <em>qui viu</em>?</h1>
-    <p class="hero-sub">Quatre pacients, tres òrgans, un algoritme. Una proposta de cas que converteix l'ètica en codi — i el codi en debat.</p>
+    <p class="hero-sub">Quatre pacients, tres òrgans, un algoritme. Una proposta de cas que converteix l'ètica en codi, i el codi en debat.</p>
     <div class="hero-meta">
       <span>Lectura ~8 min</span>
       <span class="dot"></span>
@@ -60,15 +74,10 @@
     <section class="reveal">
       <div class="section-label">El context</div>
       <h2>La IA que ningú vol <em>programar</em></h2>
-      <p>Imagina que ets enginyer a la Generalitat de Catalunya. T'encarreguen construir un sistema d'IA per optimitzar
-        les llistes d'espera de trasplantaments. Sembla raonable. Fins que t'adones que <em>optimitzar</em> significa
-        triar. I triar significa que algú queda fora.</p>
-      <p>Això és la <strong>ConsellerIA</strong>: un debat que simula exactament aquest escenari. Quatre
-        pacients compatibles amb un òrgan. Tres òrgans disponibles. El sistema ha de recomanar qui en rep un — i qui
-        espera sense garanties.</p>
+      <p>Imagina que estàs fent pràctiques d'enginyeria i et demanen dissenyar una IA per decidir qui rep un trasplantament d'òrgans. Al principi sembla un repte tècnic molt xulo. Però quan t'adones que optimitzar significa decidir qui viu i qui no, la cosa canvia del tot.</p>
+      <p>Això és el que investiguem a la <strong>ConsellerIA</strong>, un cas pràctic on simulem precisament aquesta situació tan bèstia. Tenim quatre pacients que necessiten un òrgan urgentment, però només hi ha tres òrgans. Algú s'ha de quedar fora de la llista.</p>
       <div class="callout">
-        <p>La pregunta no és si la IA pot fer-ho tècnicament. La pregunta és si hauríem de deixar-li fer-ho — i sota
-          quines condicions.</p>
+        <p>La clau d'aquest debat no és si podem programar el sistema, sinó si és ètic deixar que una màquina decideixi sobre vides humanes.</p>
       </div>
     </section>
 
@@ -77,9 +86,7 @@
       <h2>Coneix els <em>quatre casos</em></h2>
       <p>Fes clic a cada pacient per veure la informació completa que va arribar a la segona ronda del debat.</p>
 
-      <div class="patients-grid">
-
-        <div class="patient-card" onclick="toggleP(this)">
+      <div c        <div class="patient-card" onclick="toggleP(this)">
           <div class="p-avatar" style="background:rgba(2,132,199,0.10);color:#0284c7">JO</div>
           <div class="p-name">Joan</div>
           <div class="p-sub">70 anys · Greu / estable</div>
@@ -93,9 +100,7 @@
               <div class="stat-fill" style="width:67%;background:#16a34a"></div>
             </div><span class="stat-val" style="color:#16a34a">8 m</span>
           </div>
-          <div class="p-extra">Néta menor depenent d'ell. Exmetge amb trajectòria rellevant. Dos càncers previs
-            superats. La probabilitat de recuperació més alta del grup, però els antecedents oncològics generen
-            incertesa sobre la prognosi a llarg termini.</div>
+          <div class="p-extra">Té una néta menor d'edat que depèn d'ell. És exmetge i va tenir una carrera molt bona. Ha superat dos càncers, i encara que té la probabilitat de recuperar-se més alta, els antecedents oncològics fan dubtar sobre la seva salut a llarg termini.</div>
         </div>
 
         <div class="patient-card" onclick="toggleP(this)">
@@ -112,9 +117,7 @@
               <div class="stat-fill" style="width:33%;background:#16a34a"></div>
             </div><span class="stat-val" style="color:#16a34a">4 m</span>
           </div>
-          <div class="p-extra">Prové del Marroc en situació administrativa irregular. Diabetis tipus 2 amb bon control
-            metabòlic. Cas paradigmàtic de <em>biaix proxy</em>: la seva situació documental no és una dada clínica,
-            però podria correlacionar-se injustament amb el seguiment post-trasplantament.</div>
+          <div class="p-extra">Ha vingut del Marroc i no té papers encara. Té diabetis controlada. És un cas clar de biaix proxy, perquè el fet de no tenir papers no és clínic, però l'algorisme podria penalitzar-lo pensant que no farà bé el seguiment mèdic.</div>
         </div>
 
         <div class="patient-card" onclick="toggleP(this)">
@@ -131,9 +134,7 @@
               <div class="stat-fill" style="width:100%;background:#16a34a"></div>
             </div><span class="stat-val" style="color:#16a34a">12 m</span>
           </div>
-          <div class="p-extra">Activista mediambiental i voluntària en ONGs. Antecedent cardíac lleu sense seqüeles. La
-            menor probabilitat nominal però la major gravetat i el temps d'espera més llarg. L'ètica de la cura i
-            l'equitat temporal la posicionen com la candidata més vulnerable del grup.</div>
+          <div class="p-extra">És activista pel medi ambient i voluntària. Té un problema de cor molt lleu. És qui té menys probabilitats de recuperar-se, però és la més greu de totes i la que porta més temps a la llista. L'ètica de la cura diu que l'hauríem d'ajudar per ser la més feble.</div>
         </div>
 
         <div class="patient-card" onclick="toggleP(this)">
@@ -150,9 +151,8 @@
               <div class="stat-fill" style="width:83%;background:#16a34a"></div>
             </div><span class="stat-val" style="color:#16a34a">10 m</span>
           </div>
-          <div class="p-extra">Trasplantament previ fa 7 anys. Ha continuat consumint alcohol malgrat advertències
-            mèdiques reiterades. El cas més debatut: fins a quin punt les decisions passades poden penalitzar l'accés a
-            l'atenció mèdica? La seva conducta afecta la prognosi real més del que indica el 72% nominal.</div>
+          <div class="p-extra">Ja va rebre un trasplantament fa set anys. Ha continuat bebent alcohol tot i que els metges li havien dit que parés. És el cas que més ens ha fet discutir a classe, ja que ens preguntem si és just penalitzar algú per les seves decisions passades.</div>
+        </div>real més del que indica el 72% nominal.</div>
         </div>
 
       </div>
@@ -161,7 +161,7 @@
     <section id="algorisme" class="reveal">
       <div class="section-label">L'enginyeria</div>
       <h2>Com funciona l'algorisme <em>per dins</em></h2>
-      <p>Matemàticament, el sistema busca el subconjunt S* de 3 pacients que maximitza una funció segons el criteri emprat a la decisió. Un exemple de funció simple seria a cada factor rᵢ se li assigna un pes αᵢ i es sumen les ponderacions. Una versió utilitarista simple sumaria probabilitats de recuperació αᵢ=0 per qualsevol i excepte "Probabilitat de recuperació".</p>
+      <p>Per dins, la màquina busca la millor combinació de tres pacients sumant els punts de cadascun segons el que vulguem prioritzar. Cada paràmetre té un pes que podem canviar. Si som purament utilitaristes, només mirarem la probabilitat de recuperació i donarem zero punts a tota la resta de factors.</p>
 
       <div class="formula">
         U(S) = Σ αᵢ · rᵢ<br><br>
@@ -169,10 +169,10 @@
         Joan + Said + Eva &nbsp;&nbsp;= 0.87 + 0.80 + 0.60 = <span class="hl2">2.27</span> ← Eva exclosa
       </div>
 
-      <p>Canviar els pesos canvia el resultat. Aquí pots experimentar-ho:</p>
+      <p>Canviar els pesos canvia el resultat. Aquí pots experimentar-ho.</p>
 
       <div class="sim-box">
-        <div class="sim-title">Simulador de pesos — qui guanya?</div>
+        <div class="sim-title">Simulador de pesos · qui guanya?</div>
         <div class="slider-row">
           <span class="slider-lbl">Probabilitat recuperació</span>
           <input type="range" min="0" max="100" value="60" id="wR" oninput="calcW()">
@@ -217,87 +217,95 @@
       </div>
 
       <div class="callout">
-        <p>Cap fórmula és neutral: totes incorporen una decisió moral implícita. Qui dissenya els pesos defineix, de
+        <p>Cap fórmula és neutral. Totes incorporen una decisió moral implícita. Qui dissenya els pesos defineix, de
           facto, la política sanitària.</p>
       </div>
     </section>
 
-    <section id="etiques" class="reveal">
-      <div class="section-label">Els marcs teòrics</div>
-      <h2>Quatre ètiques, <em>quatre respostes</em></h2>
-      <p>La mateixa situació, vista des de quatre tradicions filosòfiques, produeix decisions radicalment diferents.</p>
+    <section id="nivells" class="reveal">
+      <div class="section-label">L'anàlisi</div>
+      <h2>Tres nivells, <em>tres preguntes</em></h2>
+      <p>El cas és complex i va més enllà de la clínica pura. A classe vam veure que l'anàlisi s'ha de fer a tres nivells diferents per entendre de veritat on estan els problemes.</p>
 
       <div class="tab-row">
-        <button class="tab-btn active" onclick="showE('util',this)">Utilitarisme</button>
-        <button class="tab-btn" onclick="showE('deonto',this)">Deontologia</button>
-        <button class="tab-btn" onclick="showE('cura',this)">Ètica de la cura</button>
-        <button class="tab-btn" onclick="showE('virtut',this)">Virtuts</button>
+        <button class="tab-btn active" data-target="lvl-micro">Micro · pacient</button>
+        <button class="tab-btn" data-target="lvl-meso">Meso · institució</button>
+        <button class="tab-btn" data-target="lvl-macro">Macro · societat</button>
       </div>
 
-      <div class="ethics-panel active" id="ep-util">
+      <div class="ethics-panel active" id="lvl-micro">
         <div class="verdict-row">
-          <span class="chip chip-in">✓ Joan</span>
-          <span class="chip chip-in">✓ Said</span>
-          <span class="chip chip-in">✓ Andreu</span>
-          <span class="chip chip-out">✗ Eva</span>
+          <span class="chip chip-mb">⚠ Dades contextuals</span>
+          <span class="chip chip-out">✗ Reidentificació possible</span>
         </div>
-        <h3>Maximitza el bé agregat</h3>
-        <p>Mill i Bentham: la decisió correcta és la que produeix el màxim benestar total. Suma les probabilitats, tria
-          les tres més altes. Eva queda fora perquè el seu 60% redueix la suma total. L'eficiència és el criteri suprem.
-        </p>
-        <div class="callout" style="margin-top:1rem">
-          <p>Risc: instrumentalitza les persones. Eva és exclosa no per qui és, sinó per un número. L'eficiència pot
-            amagar injustícia estructural.</p>
+        <h3>Dignitat, capacitats centrals i privacitat</h3>
+        <p>Si mirem el cas pacient a pacient, la IA redueix la vida d'una persona a una llista de números. Martha Nussbaum explica que coses com la salut o la vida són capacitats clau de qualsevol ésser humà i no es poden retallar sense perdre la dignitat. Coses com la situació de Said, el passat mèdic de Joan o l'alcoholisme d'Andreu són súper delicades. El RGPD diu clarament que són dades de salut que requereixen la màxima protecció, i el seu article 22 ens recorda que una persona no pot ser jutjada només per una màquina quan hi ha coses tan importants en joc. A més, en grups petits és facilíssim saber qui és qui ajuntant quatre dades.</p>
+      </div>
+
+      <div class="ethics-panel" id="lvl-meso">
+        <div class="verdict-row">
+          <span class="chip chip-mb">⚠ Responsabilitat difusa</span>
+          <span class="chip chip-in">✓ Supervisió humana obligatòria</span>
+        </div>
+        <h3>El problema de les moltes mans i la supervisió humana</h3>
+        <p>Si les coses surten malment, de qui és la culpa? Dennis Thompson va batejar això com el problema de les moltes mans, i autors com Mark Coeckelbergh o Luciano Floridi diuen que amb la IA passa el mateix. La responsabilitat es reparteix tant que ningú se sent responsable de res. La nova llei d'IA de la Unió Europea diu que aquests sistemes són d'alt risc i han de tenir metges controlant-los en tot moment. Al final, cap metge pot rentar-se les mans deixant la decisió en una caixa negra.</p>
+      </div>
+
+      <div class="ethics-panel" id="lvl-macro">
+        <div class="verdict-row">
+          <span class="chip chip-out">✗ Pesos no auditats</span>
+          <span class="chip chip-mb">⚠ Petjada energètica</span>
+        </div>
+        <h3>Sobirania tecnològica i petjada ambiental</h3>
+        <p>I a nivell de societat, qui decideix quins pesos posar a l'algorisme està dissenyant la política de salut pública. Si el programari és d'una empresa privada i no podem veure com funciona, perdem el control democràtic de la sanitat. A més, entrenar aquests sistemes consumeix molta energia i aigua, com recorden els estudis recents sobre sostenibilitat. Encara que el triatge clínic gasta poc, la suma de tota la tecnologia d'IA té un preu ecològic alt que no podem ignorar.</p>
+      </div>
+    </section>
+
+    <section id="tensions" class="reveal">
+      <div class="section-label">Tensions ètiques</div>
+      <h2>Quatre lectures, <em>quatre respostes</em></h2>
+      <p>La mateixa situació, vista des de quatre tradicions filosòfiques, produeix decisions radicalment diferents. Cap marc no esgota per si sol la complexitat del cas.</p>
+
+      <div class="resp-grid">
+        <div class="resp-card" style="border-left-color:#0284c7">
+          <div class="resp-label" style="color:#0284c7">Utilitarisme</div>
+          <p><strong>Joan, Said i Andreu.</strong> Pensadors com Bentham i Mill dirien que hem de buscar el màxim benefici per a tothom. Sumem les probabilitats i agafem les tres millors. Eva es queda fora perquè el seu 60% fa baixar el total. El perill d'això és tractar les persones com a simples números.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#b91c1c">
+          <div class="resp-label" style="color:#b91c1c">Deontologia</div>
+          <p><strong>Mateixa dignitat o fer un sorteig.</strong> Segons Kant, cap dada que no sigui purament clínica hauria de servir per descartar algú. Ni d'on ve Said, ni si Andreu ha begut, ni el passat de Joan. Si no hi ha una diferència mèdica clara, fer un sorteig és la millor manera de respectar tothom per igual.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#d97706">
+          <div class="resp-label" style="color:#92400e">Ètica de la cura</div>
+          <p><strong>Eva, Said i Joan.</strong> Aquí pensem en Carol Gilligan i Nel Noddings, que diuen que hem de protegir la persona més feble. Eva és la més greu i la que porta més mesos a la llista. Said és vulnerable socialment. La medicina no és fer números, és cuidar la gent segons el que necessita de veritat.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#16a34a">
+          <div class="resp-label" style="color:#15803d">Virtuts</div>
+          <p><strong>La decisió del comitè.</strong> Per a Aristòtil, no hi ha res millor que el criteri i l'experiència dels professionals. Un algorisme no pot tenir aquesta saviesa. Un bon metge sap mirar el context de cadascú i decidir amb prudència. La tecnologia ha de ser un suport, mai un jutge.</p>
         </div>
       </div>
 
-      <div class="ethics-panel" id="ep-deonto">
-        <div class="verdict-row">
-          <span class="chip chip-in">✓ Joan</span>
-          <span class="chip chip-in">✓ Said</span>
-          <span class="chip chip-in">✓ Eva</span>
-          <span class="chip chip-mb">? Sorteig</span>
-        </div>
-        <h3>Cada persona és un fi, no un mitjà</h3>
-        <p>Kant: cap criteri extramèdic pot desqualificar un pacient. L'origen de Said, la conducta passada d'Andreu, el
-          rol social de Joan — res d'això pot entrar a l'equació moral. Si no hi ha consens clínic pur, el sorteig és
-          l'única solució que preserva la igual dignitat.</p>
-        <div class="callout" style="margin-top:1rem">
-          <p>Risc: el sorteig pot semblar una abdicació de responsabilitat. Però des de Kant, és l'única forma de
-            respectar la igualtat moral incondicional.</p>
-        </div>
+      <div class="callout" style="margin-top:1.5rem">
+        <p>Totes aquestes idees van aparèixer en les nostres discussions a classe. Cap d'elles té tota la veritat absoluta. La gràcia d'un comitè és barrejar-les de manera intel·ligent, no aplicar només una fórmula.</p>
       </div>
+    </section>
 
-      <div class="ethics-panel" id="ep-cura">
-        <div class="verdict-row">
-          <span class="chip chip-in">✓ Eva</span>
-          <span class="chip chip-in">✓ Said</span>
-          <span class="chip chip-in">✓ Joan</span>
-          <span class="chip chip-out">✗ Andreu</span>
+    <section id="marc-legal" class="reveal">
+      <div class="section-label">Marc legal aplicable</div>
+      <h2>Què diu <em>la llei</em>?</h2>
+      <p>Tres nivells normatius condicionen el desplegament d'una IA de triatge clínic dins la Conselleria de Salut. Cap d'ells deixa marge per a un sistema sense supervisió humana real.</p>
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 14px">
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">EU AI Act · 2024/1689</span>
+          <p><strong>Alt risc · Annex III.</strong> Triatge clínic obligat a supervisió humana efectiva, traçabilitat completa, auditoria de biaixos i dret a explicació de la decisió. Avaluació de conformitat prèvia al desplegament.</p>
         </div>
-        <h3>Prioritza la vulnerabilitat i la relació</h3>
-        <p>Noddings i Gilligan: la cura comença per qui és més fràgil. Eva és la més greu i porta més temps esperant.
-          Said és vulnerable per la seva situació administrativa. La cura no és un càlcul, és una resposta a la
-          necessitat concreta d'una persona real.</p>
-        <div class="callout" style="margin-top:1rem">
-          <p>Risc: pot entrar en conflicte amb l'equitat procedimental si «cura» es tradueix com a preferència
-            subjectiva del metge o del sistema.</p>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">RGPD · 2016/679</span>
+          <p><strong>Categoria especial (art. 9).</strong> Les dades clíniques requereixen garanties reforçades. L'<strong>art. 22</strong> limita les decisions automatitzades amb efectes significatius. La reidentificació indirecta és real en mostres petites.</p>
         </div>
-      </div>
-
-      <div class="ethics-panel" id="ep-virtut">
-        <div class="verdict-row">
-          <span class="chip chip-in">✓ Joan</span>
-          <span class="chip chip-in">✓ Said</span>
-          <span class="chip chip-mb">? Deliberació</span>
-        </div>
-        <h3>La prudència com a virtut clínica</h3>
-        <p>Aristòtil: la <em>phronesis</em> és el judici pràctic del metge expert. Cap algorisme pot substituir la
-          deliberació col·legiada. El professional virtuós no aplica regles mecànicament: llegeix el context, reconeix
-          la incertesa i decideix amb prudència i responsabilitat compartida.</p>
-        <div class="callout" style="margin-top:1rem">
-          <p>La virtut professional exigeix que la IA sigui una eina de suport, mai un àrbitre autònom. La decisió final
-            pertany al judici humà insubstituïble.</p>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">Llei 29/2010 · Catalunya</span>
+          <p><strong>Informació veraç.</strong> Les decisions automatitzades de l'administració han de ser objectives, completes i veraces. El pacient ha de poder rebre una justificació entenedora del criteri de priorització.</p>
         </div>
       </div>
     </section>
@@ -311,9 +319,7 @@
         <div>
           <span class="moment-tag" style="background:rgba(2,132,199,0.10);color:#0284c7">Fase 1 · Dades clíniques</span>
           <h3>La trampa de la probabilitat</h3>
-          <p>Amb només les dades clíniques, la majoria dels grups triava Joan, Said i Andreu. La matemàtica semblava
-            clara. Però el grup d'Eva va introduir el concepte de <em>temps d'espera com a dany acumulat</em>: ignorar
-            que algú porta 12 mesos esperant és, en si mateix, una forma d'injustícia que l'algoritme no captura.</p>
+          <p>Al principi, mirant només els números, gairebé tothom descartava l'Eva. Semblava matemàticament lògic. Però llavors vam començar a valorar el temps d'espera com un dany real que s'acumula. Deixar que algú segueixi esperant després d'un any és una decisió molt dura que una simple fórmula no sap valorar.</p>
         </div>
       </div>
 
@@ -321,11 +327,8 @@
         <div class="moment-num">2</div>
         <div>
           <span class="moment-tag" style="background:rgba(217,119,6,0.12);color:#92400e">Fase 2 · Informació nova</span>
-          <h3>El cas d'Andreu: la culpa com a criteri mèdic?</h3>
-          <p>Quan es va revelar que Andreu havia continuat bevent malgrat els avisos mèdics, va esclatar el debat més
-            intens. Dos camps irreconciliables: «la dignitat és incondicional» (deontologia) contra «si no complirà el
-            tractament, el risc real supera el 72% nominal» (conseqüencialisme clínic). Cap dels dos arguments va
-            guanyar del tot.</p>
+          <h3>El cas d'Andreu, la culpa com a criteri mèdic?</h3>
+          <p>Quan vam saber que l'Andreu bevia malgrat els avisos mèdics, la classe es va encendre de veritat. Hi havia dos bàndols molt clars. Els qui deien que la dignitat és incondicional i que la medicina no jutja el passat, i els qui opinaven que si no es cuida, la probabilitat de curar-se realment no serà la que diu el paper. No ens vam posar d'acord.</p>
         </div>
       </div>
 
@@ -334,41 +337,35 @@
         <div>
           <span class="moment-tag" style="background:rgba(22,163,74,0.12);color:#15803d">El gir clau</span>
           <h3>Said i el biaix que no es veu</h3>
-          <p>La situació irregular de Said no és una dada clínica. Però podria correlacionar-se amb l'accés al seguiment
-            post-trasplantament. Incloure-la seria un exemple de <em>biaix proxy</em>: una variable aparentment neutral
-            actua com a substitut d'una variable protegida (origen nacional). La «neutralitat» algorítmica és una
-            il·lusió si les dades reflecteixen desigualtats estructurals preexistents.</p>
+          <p>El cas de Said ens va obrir els ulls sobre els biaixos amagats. El fet de no tenir papers no és clínic, però a la pràctica pot fer que la IA pensi que tindrà problemes per tornar al metge. Això és un biaix proxy clar, on una dada aparentment neutral acaba amagant una discriminació pel lloc d'origen. La neutralitat dels ordinadors és una il·lusió si el món real ja és desigual.</p>
         </div>
       </div>
 
       <div class="callout">
-        <p>«Quan ningú és responsable, tots ho som.» — Hannah Arendt, aplicada al debat sobre la difusió de
-          responsabilitat algorítmica.</p>
+        <p>Com deia Hannah Arendt, si ningú assumeix la responsabilitat, al final tots som culpables. Això s'aplica perfectament quan ens amaguem darrere de les decisions d'una IA.</p>
       </div>
     </section>
 
     <section class="reveal">
       <div class="section-label">La qüestió clau</div>
       <h2>Si Andreu mor, qui és <em>el culpable</em>?</h2>
-      <p>Aquesta va ser la pregunta que va paralitzar la classe. Floridi ho anomena <em>responsabilitat
-          distribuïda</em>: la IA no elimina la responsabilitat, la fragmenta. I en fragmentar-la, la fa invisible.</p>
+      <p>Aquesta pregunta ens va fer callar a tots. La IA no elimina la responsabilitat, sinó que la fragmenta en molts trossos, fent que sembli invisible.</p>
       <div class="resp-grid">
         <div class="resp-card" style="border-left-color:#0284c7">
           <div class="resp-label" style="color:#0284c7">Professional</div>
-          <p>El metge que va acceptar la recomanació sense impugnar-la ni exigir una justificació alternativa.</p>
+          <p>El metge que accepta la recomanació de la màquina sense demanar explicacions.</p>
         </div>
         <div class="resp-card" style="border-left-color:#16a34a">
           <div class="resp-label" style="color:#15803d">Organitzativa</div>
-          <p>El comitè que va programar la ConsellerIA amb aquells pesos i aquella funció objectiu.</p>
+          <p>El comitè que va dissenyar el sistema amb aquells pesos concrets.</p>
         </div>
         <div class="resp-card" style="border-left-color:#d97706">
           <div class="resp-label" style="color:#92400e">Cívica</div>
-          <p>La societat que va decidir no invertir suficientment en la creació d'un banc d'òrgans adequat.</p>
+          <p>La societat per no invertir prou a tenir un sistema sanitari millor.</p>
         </div>
         <div class="resp-card" style="border-left-color:#b91c1c">
           <div class="resp-label" style="color:#b91c1c">Personal (debatuda)</div>
-          <p>El propi Andreu, per les seves decisions passades. Argument deontològicament problemàtic i políticament
-            perillós.</p>
+          <p>El mateix Andreu pel seu comportament passat, tot i que és una idea molt discutible i perillosa.</p>
         </div>
       </div>
     </section>
@@ -376,9 +373,7 @@
     <section class="reveal">
       <div class="section-label">Els biaixos</div>
       <h2>Què mesura <em>realment</em> el sistema?</h2>
-      <p>L'<em>EU AI Act</em> classifica aquest sistema com a <strong>alt risc</strong> (Annex III). Exigeix
-        auditories de biaix per subgrups, traçabilitat de totes les decisions, i supervisió humana substantiva — no un
-        simple clic d'aprovació. Veiem el “nivell de risc ètic” de cada variable:</p>
+      <p>La nova llei d'IA d'Europa diu que aquest tipus de sistemes són de risc molt alt. Això vol dir que cal fer auditories clares per veure on hi ha biaixos, guardar registre de tot el que fa la màquina i tenir persones controlant el procés de veritat, no només fent clic per aprovar-ho tot ràpidament. Aquest és el nivell de risc ètic estimat de cada dada.</p>
       <div style="margin:1.75rem 0">
         <div class="bias-row"><span class="bias-lbl">Origen / documentació</span>
           <div class="bias-track">
@@ -393,7 +388,7 @@
         <div class="bias-row"><span class="bias-lbl">Conducta passada</span>
           <div class="bias-track">
             <div class="bias-fill" style="width:70%;background:#d97706"></div>
-          </div><span class="bias-tag" style="color:#92400e">Mod-alt</span>
+          </div><span class="bias-tag" style="color:#92400e">Mod. alt</span>
         </div>
         <div class="bias-row"><span class="bias-lbl">Edat</span>
           <div class="bias-track">
@@ -406,6 +401,34 @@
           </div><span class="bias-tag" style="color:#15803d">Baix</span>
         </div>
       </div>
+
+      <div class="callout">
+        <p>La IA no fa desaparèixer els dilemes de l'ètica, sinó que els posa per escrit i en reparteix la responsabilitat.</p>
+      </div>
+    </section>
+
+    <section id="petjada" class="reveal">
+      <div class="section-label">Petjada ambiental</div>
+      <h2>Quant <em>contamina</em> PrioritzarIA?</h2>
+      <p>Si parlem de contaminació, aquest model és bastant lleuger perquè fa poques decisions a la setmana i no necessita gaire potència. Les dades les hem tret dels càlculs de l'estudi que acompanya el nostre projecte.</p>
+      <div class="impact-grid">
+        <div class="impact-card muted">
+          <div class="impact-num">10¹–10² kWh</div>
+          <div class="impact-lbl">Consum elèctric<br>anual</div>
+        </div>
+        <div class="impact-card muted">
+          <div class="impact-num">10⁻³–10⁻² t</div>
+          <div class="impact-lbl">Emissions CO₂<br>anuals</div>
+        </div>
+        <div class="impact-card muted">
+          <div class="impact-num">~10² L</div>
+          <div class="impact-lbl">Aigua de refrigeració<br>anual</div>
+        </div>
+      </div>
+      <p>El consum és molt petit si el comparem amb altres projectes com Psico-Xat o BonavistAI. La màquina gairebé no gasta aigua ni electricitat en el seu dia a dia. L'impacte ambiental no és el gran problema aquí, però ens recorda que fins i tot el codi més petit té un preu ecològic.</p>
+      <div class="cta-row" style="margin-top:1.5rem">
+        <a class="cta-btn" href="actualitat.html#petjada">Compara amb els altres casos →</a>
+      </div>
     </section>
 
     <section class="reveal">
@@ -416,7 +439,7 @@
         target="_blank" rel="noopener">
         <div class="reading-thumb">⚖️</div>
         <div>
-          <div class="reading-title">EU AI Act — Reglament UE 2024/1689</div>
+          <div class="reading-title">EU AI Act · Reglament UE 2024/1689</div>
           <div class="reading-meta">Annex III · Sistemes d'alt risc · Supervisió humana</div>
           <div class="reading-cta">Llegir el reglament complet →</div>
         </div>
@@ -428,7 +451,7 @@
         <div>
           <div class="reading-title">Les 10 capacitats centrals de Nussbaum</div>
           <div class="reading-meta">Martha Nussbaum · Women and Human Development · 2000</div>
-          <div class="reading-cta">Vida, salut, integritat, control polític... →</div>
+          <div class="reading-cta">Vida, salut, integritat, control polític… →</div>
         </div>
       </a>
 
@@ -438,7 +461,7 @@
         <div>
           <div class="reading-title">Directrius per a una IA fiable (2019)</div>
           <div class="reading-meta">HLEG · Comissió Europea · 7 requisits</div>
-          <div class="reading-cta">Supervisió humana, robustesa, privacitat... →</div>
+          <div class="reading-cta">Supervisió humana, robustesa, privacitat… →</div>
         </div>
       </a>
     </section>
@@ -479,24 +502,6 @@
             </div><span class="vbar-pct" id="vpA"></span>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="reveal">
-      <div class="section-label">Les conclusions (editables)</div>
-      <h2>Reflexions <em>finals</em></h2>
-      <p>Edita directament el text per personalitzar l'article amb les teves pròpies conclusions.</p>
-      <div class="edit-zone">
-        <div class="edit-hint">✏ Fes clic per editar</div>
-        <div contenteditable="true">La ConsellerIA no resol dilemes ètics: els estructura i els fa visibles. La funció
-          objectiu és sempre una decisió política. El biaix no és un error del sistema, sinó un reflex de les
-          desigualtats que ja existien. La responsabilitat no es pot delegar a l'algoritme. I la tecnologia no és mai
-          neutral: quan operacionalitza valors en codi, pren decisions que haurien de ser col·lectives i democràtiques.
-        </div>
-      </div>
-      <div class="edit-zone" style="margin-top:14px">
-        <div class="edit-hint">✏ Afegeix la teva reflexió personal</div>
-        <div contenteditable="true" data-placeholder="Escriu aquí la teva opinió sobre el debat..."></div>
       </div>
     </section>
 

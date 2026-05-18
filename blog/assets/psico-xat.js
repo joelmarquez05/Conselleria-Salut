@@ -1,20 +1,4 @@
 
-function showLevel(id, btn) {
-  document.querySelectorAll('#nivells .ethics-panel').forEach(function (p) { p.classList.remove('active'); });
-  document.querySelectorAll('#nivells .tab-btn').forEach(function (b) { b.classList.remove('active'); });
-  var panel = document.getElementById('lvl-' + id);
-  if (panel) panel.classList.add('active');
-  if (btn) btn.classList.add('active');
-}
-
-function showStance(id, btn) {
-  document.querySelectorAll('#bioetica .ethics-panel').forEach(function (p) { p.classList.remove('active'); });
-  document.querySelectorAll('#bioetica .tab-btn').forEach(function (b) { b.classList.remove('active'); });
-  var panel = document.getElementById('st-' + id);
-  if (panel) panel.classList.add('active');
-  if (btn) btn.classList.add('active');
-}
-
 var votesP = { apagada: 6, fre: 16, consentiment: 6 };
 var ID_P = { apagada: 'P1', fre: 'P2', consentiment: 'P3' };
 

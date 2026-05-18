@@ -5,14 +5,6 @@ function toggleP(card) {
   if (!wasActive) card.classList.add('active');
 }
 
-function showE(id, btn) {
-  document.querySelectorAll('.ethics-panel').forEach(function (p) { p.classList.remove('active'); });
-  document.querySelectorAll('#etiques .tab-btn').forEach(function (b) { b.classList.remove('active'); });
-  var panel = document.getElementById('ep-' + id);
-  if (panel) panel.classList.add('active');
-  if (btn) btn.classList.add('active');
-}
-
 var pts = {
   Joan: { r: 87, e: 67, g: 40 },
   Said: { r: 80, e: 33, g: 60 },

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ètica a la ConsellerIA de Salut</title>
   <meta name="description"
-    content="L'assistent psicològic per IA i el límit de l'error acceptable: anàlisi d'un xatbot LLM 24/7 de salut mental.">
+    content="L'assistent psicològic per IA i el límit de l'error acceptable. Anàlisi d'un xatbot LLM 24/7 de salut mental.">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +24,21 @@
     </a>
     <div class="nav-links">
       <a href="index.html">Inici</a>
-      <a href="joc-resultats.html">Joc interactiu</a>
-      <a href="actualitat.html">Anàlisi d'actualitat</a>
+      <a href="joc-resultats.html">Activitats inicials</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Anàlisi d'actualitat
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="actualitat.html#noticies" role="menuitem">Notícies</a>
+          <a href="actualitat.html#marc-legal" role="menuitem">Marc legal</a>
+          <a href="actualitat.html#marc-etic" role="menuitem">Marc ètic</a>
+        </div>
+      </div>
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
           Casos pràctics
@@ -40,13 +53,14 @@
           <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
         </div>
       </div>
+      <a href="costos.html">Impacte</a>
       <a href="conclusions.html">Conclusions</a>
     </div>
   </nav>
 
   <header class="hero">
     <div class="hero-eyebrow">Cas 03 · Salut mental algorítmica</div>
-    <h1>Psico-<em>Xat</em>: el cost d'una <em>al·lucinació</em>.</h1>
+    <h1>Psico-<em>Xat</em>, el cost d'una <em>al·lucinació</em>.</h1>
     <p class="hero-sub">Un xatbot basat en un LLM atén milers de joves 24/7. Funciona. Fins que un dia no entén una
       ironia fosca i un adolescent no truca a ningú més. Quin marge d'error és tolerable?</p>
     <div class="hero-meta">
@@ -63,11 +77,11 @@
       <h2>Quan la saturació empeny a <em>delegar l'acompanyament</em></h2>
       <p>El cas <strong>Psico-Xat</strong> se centra en la implementació d'un xatbot de suport psicològic integrat dins l'aplicació <em>La Meva Salut</em>. Impulsat per un Model de Llenguatge Extens (LLM), neix com a resposta a la saturació endèmica dels Centres de Salut Mental Infantil i Juvenil (CSMIJ) i a l'augment alarmant de problemes d'ansietat i depressió juvenil. Inspirat en fòrums on usuaris troben consol en IAs, funciona ininterrompudament, oferint alleujament immediat i descongestionant el sistema públic de salut.</p>
       
-      <p>El conflicte ètic es torna aparent quan el sistema comet un <strong>error fatal</strong>. Atesa la naturalesa probabilística, i no lògica, dels Models de Llenguatge, el xatbot pateix una <em>al·lucinació</em> crítica: no és capaç de detectar una ironia fosca en el discurs d'un adolescent vulnerable, validant erròniament el seu estat i derivant en el suïcidi del menor.</p>
+      <p>El conflicte ètic es torna aparent quan el sistema comet un <strong>error fatal</strong>. Atesa la naturalesa probabilística, i no lògica, dels Models de Llenguatge, el xatbot pateix una <em>al·lucinació</em> crítica. No és capaç de detectar una ironia fosca en el discurs d'un adolescent vulnerable, validant erròniament el seu estat i derivant en el suïcidi del menor.</p>
       
       <div class="formula">
         Error probabilístic = 1 − P(token correcte | context)<br><br>
-        Per a un LLM en context clínic: <span class="hl">no és zero</span>. Mai. Per construcció matemàtica.<br>
+        Per a un LLM en context clínic, <span class="hl">no és zero</span>. Mai. Per construcció matemàtica.<br>
         El que decidim és <span class="hl2">quin marge d'error tolerable</span> assumim a nivell poblacional.
       </div>
 
@@ -82,9 +96,9 @@
       <p>El cas no es pot reduir a una sola dimensió. Cada nivell d'anàlisi exposa un conflicte de valors diferent.</p>
 
       <div class="tab-row">
-        <button class="tab-btn active" onclick="showLevel('micro',this)">Micro · pacient</button>
-        <button class="tab-btn" onclick="showLevel('meso',this)">Meso · institució</button>
-        <button class="tab-btn" onclick="showLevel('macro',this)">Macro · societat</button>
+        <button class="tab-btn active" data-target="lvl-micro">Micro · pacient</button>
+        <button class="tab-btn" data-target="lvl-meso">Meso · institució</button>
+        <button class="tab-btn" data-target="lvl-macro">Macro · societat</button>
       </div>
 
       <div class="ethics-panel active" id="lvl-micro">
@@ -93,7 +107,7 @@
           <span class="chip chip-out">✗ Realitat paral·lela</span>
         </div>
         <h3>Antropomorfització i falsos vincles emocionals</h3>
-        <p>A escala individual, el disseny del <em>Psico-Xat</em> indueix a l'antropomorfització. Els usuaris, altament vulnerables, tendeixen a generar relacions de dependència profunda amb una màquina incapaç de sentir empatia real. Aquesta dinàmica presenta una dicotomia perillosa: sota l'aparença de curar la soledat, el sistema pot estar fomentant un aïllament més profund, tancant el pacient en una <strong>realitat paral·lela</strong> on la complexitat del tracte humà se substitueix per una complaença algorítmica dissenyada a mida.</p>
+        <p>A escala individual, el disseny del <em>Psico-Xat</em> indueix a l'antropomorfització. Els usuaris, altament vulnerables, tendeixen a generar relacions de dependència profunda amb una màquina incapaç de sentir empatia real. Aquesta dinàmica presenta una dicotomia perillosa. Sota l'aparença de curar la soledat, el sistema pot estar fomentant un aïllament més profund, tancant el pacient en una <strong>realitat paral·lela</strong> on la complexitat del tracte humà se substitueix per una complaença algorítmica dissenyada a mida.</p>
       </div>
 
       <div class="ethics-panel" id="lvl-meso">
@@ -102,7 +116,7 @@
           <span class="chip chip-out">✗ Deure de no fer mal</span>
         </div>
         <h3>Xoc filosòfic i responsabilitat institucional</h3>
-        <p>A nivell institucional, el cas escenifica una col·lisió directa entre dues postures ètiques fonamentals. Des d'una òptica <strong>utilitarista</strong>, si l'eina ajuda a superar depressions a 10.000 joves, un error probabilístic del 0,01 % és assumible i representa un triomf en salut pública. En contrast, la <strong>deontologia</strong> s'aferra a l'imperatiu mèdic del <em>primum non nocere</em>. Si el sistema de l'Administració provoca danys irreparables de manera activa i documentada, la pràctica és èticament inviable. En aquest context, la responsabilitat d'una negligència es difumina: recau l'error sobre la Conselleria, sobre els enginyers del model, o sobre la limitació inherent del propi LLM?</p>
+        <p>A nivell institucional, el cas escenifica una col·lisió directa entre dues postures ètiques fonamentals. Des d'una òptica <strong>utilitarista</strong>, si l'eina ajuda a superar depressions a 10.000 joves, un error probabilístic del 0,01 % és assumible i representa un triomf en salut pública. En contrast, la <strong>deontologia</strong> s'aferra a l'imperatiu mèdic del <em>primum non nocere</em>. Si el sistema de l'Administració provoca danys irreparables de manera activa i documentada, la pràctica és èticament inviable. En aquest context, la responsabilitat d'una negligència es difumina. Recau l'error sobre la Conselleria, sobre els enginyers del model, o sobre la limitació inherent del propi LLM?</p>
       </div>
 
       <div class="ethics-panel" id="lvl-macro">
@@ -111,7 +125,7 @@
           <span class="chip chip-mb">⚠ Consum energètic</span>
         </div>
         <h3>Sostenibilitat ambiental i petjada hídrica</h3>
-        <p>En la dimensió ecosocial, mantenir servidors d'inferència de LLMs actius 24 hores al dia processant milions de consultes implica un cost energètic desproporcionat. Més preocupant encara és la paradoxa hídrica: la refrigeració d'aquests centres de dades requereix <strong>evaporar milions de litres d'aigua potable</strong> en un país, Catalunya, crònicament afectat per sequeres severes. Aquest cost ambiental s'ha de ponderar al costat de les alternatives tecnològiques de mitigació, com ara l'adopció de <em>Small Language Models (SLM)</em>, que ofereixen un equilibri més sostenible tot i sacrificar part de la flexibilitat generativa.</p>
+        <p>En la dimensió ecosocial, mantenir servidors d'inferència de LLMs actius 24 hores al dia processant milions de consultes implica un cost energètic desproporcionat. Més preocupant encara és la paradoxa hídrica. La refrigeració d'aquests centres de dades requereix <strong>evaporar milions de litres d'aigua potable</strong> en un país, Catalunya, crònicament afectat per sequeres severes. Aquest cost ambiental s'ha de ponderar al costat de les alternatives tecnològiques de mitigació, com ara l'adopció de <em>Small Language Models (SLM)</em>, que ofereixen un equilibri més sostenible tot i sacrificar part de la flexibilitat generativa.</p>
       </div>
     </section>
 
@@ -121,9 +135,9 @@
       <p>L'endemà de la mort del jove, es van plantejar tres escenaris de decisió a l'aula. Per evitar la falsa polarització «IA sí / IA no», cada postura oferia un <strong>nivell d'automatització diferent</strong>.</p>
 
       <div class="tab-row">
-        <button class="tab-btn active" onclick="showStance('apagada',this)">1. Apagada preventiva</button>
-        <button class="tab-btn" onclick="showStance('frè',this)">2. Fre humà</button>
-        <button class="tab-btn" onclick="showStance('consentiment',this)">3. Consentiment informat</button>
+        <button class="tab-btn active" data-target="st-apagada">1. Apagada preventiva</button>
+        <button class="tab-btn" data-target="st-fre">2. Fre humà</button>
+        <button class="tab-btn" data-target="st-consentiment">3. Consentiment informat</button>
       </div>
 
       <div class="ethics-panel active" id="st-apagada">
@@ -132,25 +146,70 @@
           <span class="chip chip-mb">⏳ Llistes d'espera tornen</span>
         </div>
         <h3>Deontologia extrema · S'apaga fins que l'error sigui zero</h3>
-        <p>L'app es desactiva immediatament fins que es pugui garantir un risc nul d'al·lucinacions, retornant al sistema humà saturat. <strong>«Primum non nocere»</strong>: una institució pública no pot operar una eina capaç de causar danys mortals de forma impredictible.</p>
+        <p>L'app es desactiva immediatament fins que es pugui garantir un risc nul d'al·lucinacions, retornant al sistema humà saturat. <strong>«Primum non nocere»</strong>. Una institució pública no pot operar una eina capaç de causar danys mortals de forma impredictible.</p>
       </div>
 
-      <div class="ethics-panel" id="st-frè">
+      <div class="ethics-panel" id="st-fre">
         <div class="verdict-row">
           <span class="chip chip-mb">⚠ Conversa restringida</span>
           <span class="chip chip-in">✓ Derivació humana garantida</span>
         </div>
-        <h3>Human-in-the-loop · La IA assisteix, no decideix</h3>
+        <h3>Amb supervisió humana · La IA assisteix, no decideix</h3>
         <p>El xatbot deixa de conversar lliurement. Es restringeix a protocols clínics molt pautats (relaxació bàsica). A la mínima detecció d'una paraula de risc, la generació de text es bloqueja i es deriva l'usuari a un professional d'urgències.</p>
       </div>
 
       <div class="ethics-panel" id="st-consentiment">
         <div class="verdict-row">
           <span class="chip chip-in">✓ Autonomia total</span>
-          <span class="chip chip-out">⚠ Risc traslladat a l'usuari</span>
+          <span class="chip chip-mb">⚠ Risc traslladat a l'usuari</span>
         </div>
         <h3>Utilitarisme · Maximitza el benefici social</h3>
         <p>L'app conserva la seva autonomia plena per ajudar al màxim nombre de persones, però s'exigeix a l'usuari l'acceptació explícita i legal dels riscos inherents a un sistema probabilístic abans d'usar-la.</p>
+      </div>
+    </section>
+
+    <section id="tensions" class="reveal">
+      <div class="section-label">Tensions ètiques</div>
+      <h2>Quatre lectures, <em>un mateix dilema</em></h2>
+      <p>El debat acadèmic sobre Psico-Xat es pot llegir des de quatre tradicions filosòfiques. Cap d'elles no esgota per si sola la complexitat del cas.</p>
+
+      <div class="resp-grid">
+        <div class="resp-card" style="border-left-color:#0284c7">
+          <div class="resp-label" style="color:#0284c7">Utilitarisme</div>
+          <p><strong>Mantenir el sistema.</strong> Si l'eina ajuda milers de joves a superar quadres d'ansietat, un error probabilístic residual és assumible. La inacció també té víctimes, perquè la manca d'atenció psicològica també causa morts.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#b91c1c">
+          <div class="resp-label" style="color:#b91c1c">Deontologia</div>
+          <p><strong>Apagar el sistema.</strong> Una institució pública no pot operar un sistema capaç de causar morts evitables. El <em>primum non nocere</em> és innegociable encara que el balanç agregat sigui positiu.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#d97706">
+          <div class="resp-label" style="color:#92400e">Ètica de la cura</div>
+          <p><strong>El vincle no és prescindible.</strong> Per a Noddings i Gilligan, l'acompanyament emocional reclama una presència humana. Cap LLM no pot substituir-la i és en aquesta dimensió relacional on la societat traça la línia més clara.</p>
+        </div>
+        <div class="resp-card" style="border-left-color:#16a34a">
+          <div class="resp-label" style="color:#15803d">Virtuts</div>
+          <p><strong>Phronesis i prudència.</strong> El professional virtuós sap reconèixer els seus límits. Una eina probabilística només es pot integrar al cas clínic amb supervisió humana especialitzada i contínua, mai com a interlocutora autònoma.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="marc-legal" class="reveal">
+      <div class="section-label">Marc legal aplicable</div>
+      <h2>Què diu <em>la llei</em>?</h2>
+      <p>Tres nivells normatius regulen el desplegament d'un xatbot LLM a l'aplicació pública La Meva Salut. Cap d'ells permet un sistema sense protocols clars de derivació humana i transparència sobre el risc residual.</p>
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 14px">
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">EU AI Act · 2024/1689</span>
+          <p><strong>Alt risc · Annex III.</strong> Els sistemes d'IA aplicats a salut mental són d'alt risc. Exigeixen avaluació de conformitat, monitorització contínua, supervisió humana efectiva i pla documentat de mitigació davant d'al·lucinacions.</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">RGPD · 2016/679</span>
+          <p><strong>Categoria especial (art. 9).</strong> Les dades de salut mental són especialment sensibles. Tractament només sobre la base d'un consentiment explícit i amb el principi de minimització, mai per entrenar models sense base jurídica clara.</p>
+        </div>
+        <div class="card-link" style="cursor:default">
+          <span class="card-tag">Llei 29/2010 · Catalunya</span>
+          <p><strong>Informació veraç.</strong> Els usuaris han de rebre informació objectiva sobre la naturalesa probabilística del sistema. Un LLM mai pot presentar-se com a interlocutor terapèutic equivalent a un professional humà.</p>
+        </div>
       </div>
     </section>
 
@@ -162,19 +221,75 @@
 
       <div class="resp-grid">
         <div class="resp-card" style="border-left-color:var(--accent-2)">
-          <div class="resp-label" style="color:var(--accent-2)">Grup 3: L'efecte democratitzador</div>
+          <div class="resp-label" style="color:var(--accent-2)">Grup 3 · L'efecte democratitzador</div>
           <p>La manca d'atenció per saturació del sistema ja provoca pèrdues irreparables (dany per omissió). L'argument clau per acceptar el risc tecnològic és que el xatbot <strong>democratitzaria</strong> l'accés a l'acompanyament psicològic per a gran part de la població que no pot assumir els costos de la privada.</p>
         </div>
         <div class="resp-card" style="border-left-color:var(--accent)">
-          <div class="resp-label" style="color:var(--accent)">Grup 1: Tolerància zero a l'error actiu</div>
+          <div class="resp-label" style="color:var(--accent)">Grup 1 · Tolerància zero a l'error actiu</div>
           <p>És inacceptable que una institució pública financi i operi una eina capaç de causar danys mortals de forma activa i imprevisible. Per molt útil que sigui a nivell agregat, els riscos de dany irreversible per al·lucinacions superen l'optimització de recursos.</p>
         </div>
       </div>
 
       <div class="callout" style="margin-top:2rem">
-        <h3 style="margin-top:0;font-size:16px;margin-bottom:8px">El punt d'acord unànime: "Això no és ChatGPT"</h3>
-        <p style="margin-bottom:0">Tot i la disparitat frontal de criteris de decisió, hi va haver un consens transversal inqüestionable en la part tècnica: el sistema mai podria ser la implementació directa d'un LLM genèric i comercial. De tirar-se endavant, l'eina requeriria un model fundacional entrenat amb corpus exclusivament clínics, i un disseny extremadament rígid de <strong>guardrails</strong> (barreres de contenció) per restringir la seva capacitat generativa únicament a l'àmbit terapèutic controlat.</p>
+        <h3 style="margin-top:0;font-size:16px;margin-bottom:8px">El punt d'acord unànime · «Això no és ChatGPT»</h3>
+        <p style="margin-bottom:0">Tot i la disparitat frontal de criteris de decisió, hi va haver un consens transversal inqüestionable en la part tècnica. El sistema mai podria ser la implementació directa d'un LLM genèric i comercial. De tirar-se endavant, l'eina requeriria un model fundacional entrenat amb corpus exclusivament clínics, i un disseny extremadament rígid de <strong>guardrails</strong> (barreres de contenció) per restringir la seva capacitat generativa únicament a l'àmbit terapèutic controlat.</p>
       </div>
+    </section>
+
+    <section id="petjada" class="reveal">
+      <div class="section-label">Petjada ambiental</div>
+      <h2>L'aigua que <em>beu</em> un LLM en temps real</h2>
+      <p>Mantenir un Model de Llenguatge Extens actiu 24 hores per donar resposta immediata a milers de joves és el cas amb la petjada més elevada del blog. L'Annex del paper estima els ordres de magnitud anuals següents per a Psico-Xat, calculats sobre les dades de Li et al. 2023 i Luccioni 2024.</p>
+      <div class="impact-grid">
+        <div class="impact-card alert">
+          <div class="impact-num">10⁵–10⁶ kWh</div>
+          <div class="impact-lbl">Consum elèctric<br>anual</div>
+        </div>
+        <div class="impact-card alert">
+          <div class="impact-num">10¹–10² t</div>
+          <div class="impact-lbl">Emissions CO₂<br>anuals</div>
+        </div>
+        <div class="impact-card alert">
+          <div class="impact-num">10⁵–10⁶ L</div>
+          <div class="impact-lbl">Aigua de refrigeració<br>anual</div>
+        </div>
+      </div>
+      <p>Quatre ordres de magnitud per damunt de PrioritzarIA i un o dos per damunt de BonavistAI. La paradoxa hídrica és greu en un país amb sequeres recurrents. La via realista de mitigació passa per <strong>Small Language Models</strong> especialitzats, que sacrifiquen part de la flexibilitat generativa per una petjada substancialment menor i una traçabilitat clínica més controlada.</p>
+      <div class="cta-row" style="margin-top:1.5rem">
+        <a class="cta-btn" href="actualitat.html#petjada">Compara amb els altres casos →</a>
+      </div>
+    </section>
+
+    <section id="lectures" class="reveal">
+      <div class="section-label">Per aprendre més</div>
+      <h2>Lectures i <em>recursos</em></h2>
+
+      <a class="reading-card" href="https://arxiv.org/abs/2304.03271" target="_blank" rel="noopener noreferrer">
+        <div class="reading-thumb">💧</div>
+        <div>
+          <div class="reading-title">Making AI Less «Thirsty» · Uncovering the secret water footprint of AI</div>
+          <div class="reading-meta">Li, Yang, Islam, Ren · 2023</div>
+          <div class="reading-cta">El cost hídric real dels LLM en operació contínua →</div>
+        </div>
+      </a>
+
+      <a class="reading-card" href="https://link.springer.com/article/10.1007/s11023-018-9482-5" target="_blank" rel="noopener noreferrer">
+        <div class="reading-thumb">🤖</div>
+        <div>
+          <div class="reading-title">AI4People · Un marc ètic per a una bona societat de la IA</div>
+          <div class="reading-meta">Luciano Floridi et al. · Minds and Machines · 2018</div>
+          <div class="reading-cta">Cinc principis (autonomia, beneficència, no maleficència, justícia, explicabilitat) →</div>
+        </div>
+      </a>
+
+      <a class="reading-card" href="https://eur-lex.europa.eu/legal-content/CA/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer">
+        <div class="reading-thumb">⚖️</div>
+        <div>
+          <div class="reading-title">EU AI Act · Reglament UE 2024/1689</div>
+          <div class="reading-meta">Annex III · Sistemes d'alt risc · Supervisió humana obligatòria</div>
+          <div class="reading-cta">Llegir el reglament complet →</div>
+        </div>
+      </a>
     </section>
 
     <section id="tu" class="reveal">
@@ -185,7 +300,7 @@
           mort del jove?</div>
         <div class="vote-grid" style="grid-template-columns: 1fr 1fr 1fr">
           <button class="vote-btn" onclick="castVoteP('apagada',this)">Apagada preventiva</button>
-          <button class="vote-btn" onclick="castVoteP('fre',this)">Fre humà · HITL</button>
+          <button class="vote-btn" onclick="castVoteP('fre',this)">Fre humà · supervisat</button>
           <button class="vote-btn" onclick="castVoteP('consentiment',this)">Consentiment informat</button>
         </div>
         <div class="vote-results" id="vResultsP">

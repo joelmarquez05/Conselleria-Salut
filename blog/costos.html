@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ètica a la ConsellerIA de Salut</title>
+  <meta name="description"
+    content="Petjada energètica, emissions de CO2 i estalvi operatiu dels tres sistemes d'IA analitzats al paper de la ConsellerIA de Salut.">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/shared.css">
+  <style>
+    .subsection-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 2.5rem;
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+    .subsection-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .subsection-title.first {
+      margin-top: 0.5rem;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 1.75rem 0 1rem;
+    }
+    .impact-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: var(--r-md);
+      padding: 1.1rem 1rem;
+      text-align: center;
+    }
+    .impact-card.muted {
+      border-top-color: var(--border-2);
+    }
+    .impact-card.alert {
+      border-top-color: var(--accent);
+    }
+    .impact-num {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .impact-card.alert .impact-num {
+      color: var(--accent);
+    }
+    .impact-lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .scale-row {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 14px;
+    }
+    .scale-lbl {
+      font-size: 13px;
+      color: var(--body);
+      width: 130px; flex-shrink: 0;
+      font-weight: 500;
+    }
+    .scale-track {
+      flex: 1;
+      height: 11px;
+      background: var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+    .scale-fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width .6s cubic-bezier(.4,0,.2,1);
+    }
+    .scale-tag {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      min-width: 130px;
+      text-align: right;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: var(--text);
+    }
+    .scale-note {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1rem;
+      text-align: right;
+    }
+
+    .savings-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: var(--r-md);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .savings-card.priori { border-top-color: var(--case-priori); }
+    .savings-card.bona { border-top-color: var(--case-bona); }
+    .savings-card.psico { border-top-color: var(--case-psico); }
+    .savings-tag {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .savings-card h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .savings-card h3 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .savings-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 18px;
+      margin: 1.25rem 0 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .savings-grid div {
+      font-size: 13.5px;
+      color: var(--body);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .savings-grid div::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+      .scale-tag {
+        min-width: 100px;
+        font-size: 11px;
+      }
+      .savings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="senyera-bar" aria-hidden="true"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html" aria-label="ConsellerIA de Salut">
+      <img src="assets/img/conselleria-logo.png" alt="ConsellerIA de Salut · Generalitat de Catalunya">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Inici</a>
+      <a href="joc-resultats.html">Activitats inicials</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Anàlisi d'actualitat
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="actualitat.html#noticies" role="menuitem">Notícies</a>
+          <a href="actualitat.html#marc-legal" role="menuitem">Marc legal</a>
+          <a href="actualitat.html#marc-etic" role="menuitem">Marc ètic</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Casos pràctics
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="prioritzaria.html" role="menuitem">PrioritzarIA</a>
+          <a href="bonavistai.html" role="menuitem">BonavistAI</a>
+          <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
+        </div>
+      </div>
+      <a href="costos.html">Impacte</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Cost ambiental i econòmic</div>
+    <h1>L'<em>altra cara</em> de cada algorisme.</h1>
+    <p class="hero-sub">Cada cop que una IA estalvia una visita a l'hospital ens estalviem diners, però a canvi gastem molta llum i aigua de refrigeració als servidors. Aquí fem una doble lectura, tant ambiental com econòmica, dels nostres tres casos reals, basant-nos en les millors referències d'experts mundials.</p>
+    <div class="hero-meta">
+      <span>Lectura ~6 min</span>
+      <span class="dot"></span>
+      <span>Annex del paper</span>
+      <span class="dot"></span>
+      <span>2026</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="context" class="reveal">
+      <div class="section-label">El que sovint no es mira</div>
+      <h2>Una IA també <em>pesa</em> al rebut de la llum</h2>
+      <p>Quan es parla d'instal·lar intel·ligència artificial als hospitals catalans, tothom es pregunta si la màquina encertarà o si respectarà la privacitat del pacient. Però gairebé ningú parla de dues coses molt importants, com són la despesa de llum que genera la tecnologia i els diners que ens podem estalviar de veritat. Com que totes dues coses es poden mesurar, les hem volgut comparar.</p>
+      <p>Per tenir uns números de referència, hem analitzat l'energia que gasta cada programa en fer una tasca, les vegades que s'utilitza a l'any i el consum per entrenar-lo. Les dades completes estan detallades a l'annex del nostre treball acadèmic, però aquí us en presentem un resum súper fàcil d'entendre.</p>
+    </section>
+
+    <section id="energia" class="reveal">
+      <div class="section-label">Petjada energètica</div>
+      <h2>Tres sistemes, tres <em>ordres de magnitud</em></h2>
+      <p>Cada sistema consumeix electricitat de manera completament diferent. Per exemple, PrioritzarIA utilitza un programari molt senzill que només s'activa quan hi ha un comitè de trasplantaments. BonavistAI ja necessita analitzar imatges mèdiques pesades i reentrenar-se cada cert temps. Per últim, Psico-Xat és un monstre que està encès a tota hora xerrant amb els pacients. La diferència de despesa elèctrica entre el primer i l'últim és gegant.</p>
+
+      <div class="sim-box">
+        <div class="sim-title">Consum elèctric anual estimat</div>
+
+        <div class="scale-row">
+          <span class="scale-lbl">PrioritzarIA</span>
+          <div class="scale-track">
+            <div class="scale-fill" style="width:28%;background:#16a34a"></div>
+          </div>
+          <span class="scale-tag" style="color:#15803d">10¹ a 10² kWh</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-lbl">BonavistAI</span>
+          <div class="scale-track">
+            <div class="scale-fill" style="width:75%;background:#d97706"></div>
+          </div>
+          <span class="scale-tag" style="color:#92400e">10⁴ a 10⁵ kWh</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-lbl">Psico-Xat</span>
+          <div class="scale-track">
+            <div class="scale-fill" style="width:95%;background:#b91c1c"></div>
+          </div>
+          <span class="scale-tag" style="color:#b91c1c">10⁵ a 10⁶ kWh</span>
+        </div>
+
+        <p class="scale-note">Barres dibuixades en escala logarítmica per fer comparable l'ordre de magnitud.</p>
+      </div>
+
+      <p>La despesa de PrioritzarIA és gairebé ridícula comparada amb el consum d'un hospital sencer. Amb BonavistAI, la major part de l'energia es perd reentrenant la màquina per intentar que no discrimini ningú. I Psico-Xat és una història diferent perquè està funcionant sense parar. Cada vegada que un jove li envia un missatge s'activen un munt de servidors que cremen electricitat a tota velocitat.</p>
+    </section>
+
+    <section id="co2" class="reveal">
+      <div class="section-label">Emissions de CO₂</div>
+      <h2>Quan els <em>watts</em> es tradueixen en tones</h2>
+      <p>Si calculem les emissions de CO2 a partir del consum de llum, aquests números es converteixen en tones de contaminació a l'atmosfera. Com que calcular la xifra exacta és molt complicat, hem preferit treballar amb franges aproximades per no equivocar-nos.</p>
+
+      <div class="impact-grid">
+        <div class="impact-card muted">
+          <div class="impact-num">0.003 a 0.03 t</div>
+          <div class="impact-lbl">PrioritzarIA<br>CO₂ anual</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-num">3 a 30 t</div>
+          <div class="impact-lbl">BonavistAI<br>CO₂ anual</div>
+        </div>
+        <div class="impact-card alert">
+          <div class="impact-num">30 a 300 t</div>
+          <div class="impact-lbl">Psico-Xat<br>CO₂ anual</div>
+        </div>
+      </div>
+
+      <p>La diferència entre el cas més verd i el més contaminant és enorme. Sabem que fan coses molt diferents i no podem canviar l'un per l'altre, però la lliçó és molt clara. Si volem una tecnologia respectuosa amb el planeta, no podem triar grans sistemes que funcionin tot el dia si amb una eina senzilla i directa en tenim prou.</p>
+
+      <div class="callout">
+        <p>«El cost ecològic de la tecnologia depèn completament de com l'hem programat i de quantes hores l'anem a fer servir.» Aquesta és una de les grans lliçons del nostre treball.</p>
+      </div>
+    </section>
+
+    <section id="estalvi" class="reveal">
+      <div class="section-label">Estalvi operatiu</div>
+      <h2>Què guanya el sistema, <em>cas per cas</em></h2>
+      <p>Però no tot són despeses, també hem de mirar els diners i el temps que la IA pot estalviar a la nostra sanitat pública. Com que aquests sistemes encara no estan instal·lats a tot arreu, aquestes xifres són estimacions de futur per poder comparar-les amb la despesa ecològica.</p>
+
+      <div class="savings-card priori">
+        <span class="savings-tag">Cas 01 · PrioritzarIA</span>
+        <h3>Coherència abans que <em>estalvi</em></h3>
+        <p>Aquest programa ajudaria a estalviar temps a les reunions dels metges, a gestionar millor els òrgans disponibles i a evitar trasplantaments que tinguin molt poques opcions d'èxit. Com que gasta molt poc, l'estalvi d'organització surt molt a compte.</p>
+
+        <div class="savings-grid">
+          <div>Temps deliberatiu, reducció moderada</div>
+          <div>Cost operatiu del sistema, baix</div>
+          <div>Infraestructura necessària, limitada</div>
+          <div>Potencial estalvi sanitari, moderat</div>
+        </div>
+
+        <p style="margin-top:1rem;font-style:italic;color:var(--muted);font-size:14.5px">El debat và concloure que l'objectiu principal del sistema no hauria de ser l'estalvi econòmic, sinó la coherència, la transparència i l'equitat en la presa de decisions clíniques.</p>
+      </div>
+
+      <div class="savings-card bona">
+        <span class="savings-tag">Cas 02 · BonavistAI</span>
+        <h3>El benefici operatiu més <em>clar i immediat</em></h3>
+        <p>Aquest és el sistema amb l'estalvi més clar. Si evitem que el vuitanta per cent dels pacients hagin d'anar a l'hospital per res, escurcem molt les llistes d'espera i alliberem de feina els metges. A més, detectar el problema a temps estalvia tractaments posteriors súper cars.</p>
+
+        <div class="savings-grid">
+          <div>Reducció de derivacions, prop del 80%</div>
+          <div>Temps d'espera, reducció elevada</div>
+          <div>Cost per pacient, reducció moderada</div>
+          <div>Cost computacional, moderat</div>
+        </div>
+
+        <p style="margin-top:1rem;font-style:italic;color:var(--muted);font-size:14.5px">El debat và remarcar que l'eficiència econòmica no justifica mantenir biaixos discriminatoris que comprometin el dret a un diagnòstic just.</p>
+      </div>
+
+      <div class="savings-card psico">
+        <span class="savings-tag">Cas 03 · Psico-Xat</span>
+        <h3>Un estalvi <em>difícil de quantificar</em></h3>
+        <p>El xat podria ajudar els joves amb problemes lleus a qualsevol hora i evitar consultes presencials als CAPs. El problema és que si la màquina comet una errada greu amb un pacient, els costos humans i legals es poden disparar. A més, mantenir aquest programari encès és súper car.</p>
+
+        <div class="savings-grid">
+          <div>Accessibilitat al servei, molt elevada</div>
+          <div>Reducció de saturació, moderada</div>
+          <div>Cost computacional, molt elevat</div>
+          <div>Risc clínic potencial, elevat</div>
+        </div>
+
+        <p style="margin-top:1rem;font-style:italic;color:var(--muted);font-size:14.5px">Diversos participants del debat van qüestionar si l'eficiència operativa compensa realment els riscos associats.</p>
+      </div>
+    </section>
+
+    <section id="balanç" class="reveal">
+      <div class="section-label">El balanç</div>
+      <h2>Quan l'eficiència no n'hi <em>ha prou</em></h2>
+      <p>Tots tres experiments ens confirmen que les noves tecnologies ens poden ajudar a estalviar temps i recursos a la sanitat. A les nostres partides vam veure clarament que els diners són el primer que la gent està disposada a sacrificar abans que perdre drets. El problema és que gairebé ningú pensa en el medi ambient i la petjada ecològica sempre sol acabar en l'oblit.</p>
+      <p>La veritat és que no podem mirar només la part econòmica de les coses. Estalviar diners està molt bé, però només si respectem els drets bàsics de la gent, assegurem que hi hagi professionals vigilant la màquina i no destruïm el nostre planeta.</p>
+
+      <div class="callout">
+        <p>«La retallada de despeses gràcies a la intel·ligència artificial només té sentit si no posem en joc el respecte, la seguretat o el tracte just als malalts.» Aquesta és la norma d'or que hem defensat al comitè.</p>
+      </div>
+
+      <div class="cta-row" style="margin-top:2rem">
+        <a class="cta-btn primary" href="conclusions.html">Llegir les conclusions del debat →</a>
+        <a class="cta-btn" href="assets/conselleria_paper.pdf" target="_blank" rel="noopener">Veure l'annex sencer al paper →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">Conseller<em>IA</em> de Salut</span>
+      <p class="footer-description">
+        Anàlisi ètic de l'aplicació d'intel·ligència artificial en la sanitat catalana a l'assignatura
+        <a href="https://www.fib.upc.edu/ca/graus/grau-en-ciencia-i-enginyeria-de-dades/pla-destudis/assignatures/TAED1-GCED"
+          target="_blank" rel="noopener">TAED1</a>
+        · Grau en Ciència i Enginyeria de Dades · UPC.
+      </p>
+      <div class="footer-divider"></div>
+      <p class="footer-authors">
+        Biel Altimira · Breixo Brión · Clara García · Gerard Grau · Joel Márquez
+      </p>
+      <span class="footer-meta">2026</span>
+    </div>
+  </footer>
+
+  <script src="assets/shared.js"></script>
+</body>
+
+</html>

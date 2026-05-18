@@ -12,6 +12,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/shared.css">
+  <style>
+    .subsection-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 2.5rem;
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+    .subsection-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .subsection-title.first {
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -24,8 +43,21 @@
     </a>
     <div class="nav-links">
       <a href="index.html">Inici</a>
-      <a href="joc-resultats.html">Joc interactiu</a>
-      <a href="actualitat.html">Anàlisi d'actualitat</a>
+      <a href="joc-resultats.html">Activitats inicials</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Anàlisi d'actualitat
+          <svg class="nav-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <a href="actualitat.html#noticies" role="menuitem">Notícies</a>
+          <a href="actualitat.html#marc-legal" role="menuitem">Marc legal</a>
+          <a href="actualitat.html#marc-etic" role="menuitem">Marc ètic</a>
+        </div>
+      </div>
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
           Casos pràctics
@@ -40,18 +72,17 @@
           <a href="psico-xat.html" role="menuitem">Psico-Xat</a>
         </div>
       </div>
+      <a href="costos.html">Impacte</a>
       <a href="conclusions.html">Conclusions</a>
     </div>
   </nav>
 
   <header class="hero">
-    <div class="hero-eyebrow">Estat de la qüestió · Catalunya 2025-2026</div>
+    <div class="hero-eyebrow">Estat de la qüestió · Catalunya 2026</div>
     <h1>L'<em>actualitat</em> que justifica aquest blog.</h1>
-    <p class="hero-sub">Mentre debatem si la IA pot governar la sanitat, el sistema català ja està en plena tensió
-      assistencial i la primera onada d'algoritmes ja opera dins el SISCAT. Aquí recollim el context periodístic,
-      institucional i legal que envolta cada cas pràctic.</p>
+    <p class="hero-sub">En un moment en què debatem si la IA ha de governar la sanitat, els hospitals catalans ja estan súper saturats i la primera onada d'algorismes ja està funcionant. En aquesta pàgina expliquem les notícies reals i les lleis que envolten els nostres tres casos pràctics.</p>
     <div class="hero-meta">
-      <span>Lectura ~6 min</span>
+      <span>Lectura ~7 min</span>
       <span class="dot"></span>
       <span>Actualitzat 2026</span>
     </div>
@@ -59,62 +90,213 @@
 
   <main class="container">
 
-    <section id="context" class="reveal">
-      <div class="section-label">Bloc A</div>
-      <h2>La tempesta perfecta i la IA com a <em>via d'escapament</em></h2>
-      <p>El sistema sanitari català es troba actualment en una situació de forta pressió assistencial estructural. L'increment de la demanda, associat a l'envelliment poblacional i a la cronicitat, ha provocat un augment sostingut de les llistes d'espera i de la saturació dels serveis. En especialitats com traumatologia, s'ha arribat a temps d'espera de fins a sis mesos per a una primera consulta. Aquesta pressió ha derivat en conflictes laborals i mobilitzacions del personal sanitari.</p>
-      <p>Amb un pressupost per al 2026 que supera els 13.500 milions d'euros, la combinació de recursos limitats i demanda creixent obliga a explorar noves formes d'optimització, entre les quals destaca la incorporació de sistemes d'intel·ligència artificial. Catalunya s'ha posicionat com un territori capdavanter, destacant la incorporació del sistema <strong>SEPI-IA</strong> a l'Hospital Universitari de Bellvitge, capaç d'analitzar tomografies i simular l'evolució de malalties pulmonars a diversos anys vista.</p>
-      <div class="callout">
-        <p>Aquesta transformació no està exempta de controvèrsia. Les declaracions atribuïdes a la consellera de Salut suggerint que la IA podria substituir professionals han generat un fort rebuig mèdic.</p>
-      </div>
-    </section>
+    <section id="noticies" class="reveal">
+      <div class="section-label">Notícies</div>
+      <h2>Les <em>notícies</em> que situen el debat</h2>
+      <p>Els nostres hospitals estan passant per un moment molt complicat. La gent no sap molt bé què pensar de la intel·ligència artificial i les primeres eines ja treballen colze a colze amb els metges. Aquí recollim les notícies i opinions que serveixen de base per a tot el debat del blog.</p>
 
-    <section id="enquesta" class="reveal">
-      <div class="section-label">Bloc B</div>
-      <h2>El pols de la societat: <em>Resum de l'Enquesta</em></h2>
-      <p>L'estudi realitzat recull les respostes de 28 persones enquestades per avaluar la percepció social sobre la delegació de decisions mèdiques a sistemes d'IA. La conclusió més clara i transversal és que la majoria d'estudiants enquestats accepten la IA com a <strong>eina de suport</strong> a la decisió clínica, però rebutgen majoritàriament la substitució autònoma dels professionals.</p>
-      
+      <h3 class="subsection-title first">La IA com a <em>via d'escapament</em></h3>
+      <p>La sanitat pública a Catalunya està molt saturada. Com que la població envelleix i hi ha més demanda, les llistes d'espera s'han disparat i de vegades has d'esperar mig any només per veure l'especialista. Això ha provocat moltes queixes i vagues entre els metges i infermers.</p>
+      <p>Per intentar solucionar-ho, s'estan provant eines d'intel·ligència artificial. Per exemple, a l'Hospital de Bellvitge ja fan servir una IA que analitza radiografies per veure com evolucionaran els pulmons dels malalts. Sembla ciència-ficció, però ja és una realitat als nostres hospitals.</p>
+      <div class="callout">
+        <p>Evidentment, tot això genera por. Fa poc la consellera de Salut va suggerir que les màquines podrien substituir alguns metges en el futur, cosa que va fer enfadar molt a tot el sector sanitari.</p>
+      </div>
+
+      <h3 class="subsection-title">El pols de la societat amb el resum de <em>l'enquesta</em></h3>
+      <p>Per saber què pensa la gent del carrer, vam fer una petita enquesta a 28 persones sobre si confiarien la seva salut a una màquina. La gran conclusió és que gairebé tothom veu bé fer servir la IA per ajudar els metges, però ningú vol que els ordinadors els diagnostiquin sols.</p>
+
       <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
         <div class="card" style="padding: 1.5rem">
-          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--accent);">IA com a suport, no com a substitut</h3>
-          <p style="margin-bottom: 0; font-size: 14px;">Davant de <em>ClinIA</em> (un sistema amb precisió superior a metges), la resposta dominant (15 persones) és que hauria d'actuar "només com a eina de suport per al metge", reclamant sempre supervisió professional.</p>
+          <h4 style="margin-top: 0; font-size: 1.1rem; color: var(--accent); font-family: var(--font-serif);">IA com a suport, no com a substitut</h4>
+          <p style="margin-bottom: 0; font-size: 14px;">Encara que una IA falli menys que un metge humà, la majoria de persones enquestades demana que l'última paraula la tingui sempre un metge real.</p>
         </div>
         <div class="card" style="padding: 1.5rem">
-          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--accent);">El dilema del triatge a Urgències</h3>
-          <p style="margin-bottom: 0; font-size: 14px;">El 60,7% estaria a favor d'un sistema d'auto-triatge. No obstant això, quan es presenta un escenari d'error on la IA falla, gairebé tothom s'adhereix a l'exigència de garanties i supervisió mèdica estricta.</p>
+          <h4 style="margin-top: 0; font-size: 1.1rem; color: var(--accent); font-family: var(--font-serif);">El dilema del triatge a Urgències</h4>
+          <p style="margin-bottom: 0; font-size: 14px;">Més de la meitat dels enquestats acceptaria un sistema de triatge automàtic a urgències. Però si la màquina s'equivoca amb un malalt greu, tothom exigeix controls molt més durs.</p>
         </div>
         <div class="card" style="padding: 1.5rem">
-          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--accent);">El biaix algorítmic</h3>
-          <p style="margin-bottom: 0; font-size: 14px;">Davant d'un sistema amb un 94% de precisió en europeus i un 79% en asiàtics, les respostes es divideixen equitativament. Això revela la manca d'un criteri ètic evident i consensuat per solucionar els biaixos en les dades d'entrenament.</p>
+          <h4 style="margin-top: 0; font-size: 1.1rem; color: var(--accent); font-family: var(--font-serif);">El biaix algorítmic</h4>
+          <p style="margin-bottom: 0; font-size: 14px;">Quan preguntem si hem d'apagar una IA que funciona molt pitjor amb pacients d'origen asiàtic, la classe es divideix a la meitat. Això demostra que no tenim una solució fàcil per als biaixos en la tecnologia.</p>
         </div>
         <div class="card" style="padding: 1.5rem">
-          <h3 style="margin-top: 0; font-size: 1.1rem; color: var(--accent);">La línia vermella: Salut Mental</h3>
-          <p style="margin-bottom: 0; font-size: 14px;">La pregunta amb el resultat més contundent (cas <em>Psico-Xat</em>): 13 persones ho consideren "perillós" i 7 exigeixen supervisió humana directa. La dimensió relacional i l'empatia són percebudes com a insubstituïbles.</p>
+          <h4 style="margin-top: 0; font-size: 1.1rem; color: var(--accent); font-family: var(--font-serif);">La línia vermella en salut mental</h4>
+          <p style="margin-bottom: 0; font-size: 14px;">El rebuig més gran ha aparegut amb el xat de salut mental. Gairebé tothom ho troba perillós o demana que hi hagi un psicòleg al darrere. Ens queda molt clar que l'empatia no es pot programar.</p>
         </div>
       </div>
     </section>
 
     <section id="marc-legal" class="reveal">
-      <div class="section-label">Bloc C</div>
-      <h2>La teranyina legal: <em>El marc normatiu</em></h2>
-      <p>L'ús de la intel·ligència artificial en l'àmbit sanitari està regulat per un marc normatiu multinivell que condiciona qualsevol implementació de la Conselleria:</p>
+      <div class="section-label">Marc legal</div>
+      <h2>El <em>marc normatiu</em> que regula la IA sanitària</h2>
+      <p>La tecnologia mèdica no pot fer el que vulgui. Hi ha lleis europees i catalanes molt estrictes que controlen qualsevol algorisme que es vulgui fer servir a la sanitat pública.</p>
 
-      <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+      <h3 class="subsection-title first">El Reglament Europeu d'<em>Intel·ligència Artificial</em></h3>
+      <p>La nova llei de la Unió Europea posa les eines de diagnòstic en una llista de màxim risc. Això vol dir que cap hospital pot utilitzar un algorisme sense fer auditories abans, registrar com s'ha pres cada decisió i assegurar que hi hagi un metge al darrere.</p>
+
+      <h3 class="subsection-title">El Reglament General de <em>Protecció de Dades</em></h3>
+      <p>La privacitat és clau. Les nostres dades mèdiques estan súper protegides per la normativa de dades. Per entrenar qualsevol IA calen permisos especials i uns nivells de seguretat molt alts.</p>
+
+      <h3 class="subsection-title">La <em>normativa catalana</em></h3>
+      <p>Finalment, la llei de la Generalitat de Catalunya diu que qualsevol decisió automatitzada de l'administració ha de ser completament objectiva i fiable, cosa molt important quan ens hi juguem la salut.</p>
+
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 2.25rem;">
         <div class="card" style="padding: 1.5rem">
           <span class="chip chip-mb" style="margin-bottom: 0.5rem; display: inline-block;">Reglament (UE) 2024/1689</span>
-          <h3 style="margin-top: 0; font-size: 1.1rem;">EU AI Act</h3>
-          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Classifica els sistemes d'IA aplicats a la salut com d'<strong>alt risc</strong>, exigint supervisió humana efectiva, transparència, traçabilitat i dret a l'explicació de les decisions.</p>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">EU AI Act</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Classifica els sistemes d'IA per a la salut com d'alt risc. Això obliga a tenir control humà real, deixar clar el funcionament de la màquina i poder explicar com s'ha decidit cada diagnòstic.</p>
         </div>
         <div class="card" style="padding: 1.5rem">
           <span class="chip chip-in" style="margin-bottom: 0.5rem; display: inline-block;">Reglament (UE) 2016/679</span>
-          <h3 style="margin-top: 0; font-size: 1.1rem;">RGPD</h3>
-          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Considera les dades de salut com una <strong>categoria especialment protegida</strong>. Requereix garanties reforçades i bases jurídiques molt estrictes per al seu tractament.</p>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">RGPD</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Considera que les dades de la nostra història clínica estan molt protegides. Exigeix controls de seguretat màxims i prohibits els intercanvis sense permís.</p>
         </div>
         <div class="card" style="padding: 1.5rem">
           <span class="chip chip-out" style="margin-bottom: 0.5rem; display: inline-block;">Catalunya · Llei 29/2010</span>
-          <h3 style="margin-top: 0; font-size: 1.1rem;">Mitjans electrònics</h3>
-          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Estableix que les decisions automatitzades de l'administració pública han de garantir la qualitat, objectivitat i fiabilitat de la informació utilitzada.</p>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Mitjans electrònics</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Diu que les decisions que prenguin els ordinadors de la Generalitat han de ser sempre netes, clares i súper fiables.</p>
         </div>
+      </div>
+
+      <div class="callout" style="margin-top: 2rem;">
+        <p>Al final, complir la llei no és només omplir papers. Amb la velocitat a la qual s'estan instal·lant aquestes tecnologies als CAPs, necessitem un control molt fort perquè no s'utilitzin de qualsevol manera.</p>
+      </div>
+    </section>
+
+    <section id="petjada" class="reveal">
+      <div class="section-label">Petjada ambiental</div>
+      <h2>La <em>petjada</em> dels tres sistemes</h2>
+      <p>L'Annex del paper estima els ordres de magnitud anuals de consum elèctric, emissions de CO₂ i ús d'aigua de refrigeració per a cadascun dels tres casos pràctics. Les xifres surten de les referències sectorials de Li et al. 2023 i Luccioni et al. 2024 sobre la petjada hídrica i energètica dels models actuals.</p>
+
+      <h3 class="subsection-title first">PrioritzarIA · model lleuger</h3>
+      <div class="impact-grid">
+        <div class="impact-card muted">
+          <div class="impact-num">10¹–10² kWh</div>
+          <div class="impact-lbl">Consum elèctric<br>anual</div>
+        </div>
+        <div class="impact-card muted">
+          <div class="impact-num">10⁻³–10⁻² t</div>
+          <div class="impact-lbl">Emissions CO₂<br>anuals</div>
+        </div>
+        <div class="impact-card muted">
+          <div class="impact-num">~10² L</div>
+          <div class="impact-lbl">Aigua de refrigeració<br>anual</div>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">BonavistAI · entrenament periòdic</h3>
+      <div class="impact-grid">
+        <div class="impact-card muted">
+          <div class="impact-num">10⁴–10⁵ kWh</div>
+          <div class="impact-lbl">Consum elèctric<br>anual</div>
+        </div>
+        <div class="impact-card muted">
+          <div class="impact-num">10⁰–10¹ t</div>
+          <div class="impact-lbl">Emissions CO₂<br>anuals</div>
+        </div>
+        <div class="impact-card alert">
+          <div class="impact-num">10³–10⁴ L</div>
+          <div class="impact-lbl">Aigua per cicle<br>de reentrenament</div>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Psico-Xat · LLM en temps real</h3>
+      <div class="impact-grid">
+        <div class="impact-card alert">
+          <div class="impact-num">10⁵–10⁶ kWh</div>
+          <div class="impact-lbl">Consum elèctric<br>anual</div>
+        </div>
+        <div class="impact-card alert">
+          <div class="impact-num">10¹–10² t</div>
+          <div class="impact-lbl">Emissions CO₂<br>anuals</div>
+        </div>
+        <div class="impact-card alert">
+          <div class="impact-num">10⁵–10⁶ L</div>
+          <div class="impact-lbl">Aigua de refrigeració<br>anual</div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: 2rem;">
+        <p>La conclusió és molt clara. Els programes senzills no consumeixen gairebé res, però els xats intel·ligents o grans models en temps real gasten molta aigua i llum, així que cal vigilar molt abans d'activar-los en obert.</p>
+      </div>
+    </section>
+
+    <section id="marc-etic" class="reveal">
+      <div class="section-label">Marc ètic</div>
+      <h2>Les <em>postures filosòfiques</em> que recorren el debat</h2>
+      <p>Per no equivocar-nos, per fer aquesta part hem demanat ajuda a en Breixo Brión, un estudiant de Filosofia de la Universitat de Barcelona. Ell ens ha ajudat a connectar els grans pensadors amb els problemes de la salut digital.</p>
+      <p>Les diferents corrents ètiques no són rivals que s'hagin de barallar entre si. Més aviat són maneres de mirar un exactament mateix problema des d'angles diferents, ajudant-nos a prendre decisions més completes.</p>
+
+      <h3 class="subsection-title first">Quatre marcs <em>clàssics</em></h3>
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-in" style="margin-bottom: 0.5rem; display: inline-block;">Bentham, Mill, Singer</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Utilitarisme</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Aquesta corrent només mira el resultat. La decisió correcta és la que ajuda a més gent o la que redueix el dolor total. En un hospital, això ens fa buscar la millor gestió de les llistes d'espera per a la majoria.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-out" style="margin-bottom: 0.5rem; display: inline-block;">Immanuel Kant</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Deontologia</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Aquí el resultat no és l'única cosa important. Cada persona té un valor sagrat i no podem utilitzar-la com una simple eina. Ens prohibeix totalment discriminar un pacient per raons socials o d'origen.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-mb" style="margin-bottom: 0.5rem; display: inline-block;">Aristòtil</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Ètica de les virtuts</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">No creu en fórmules rígides que serveixin per a tothom. L'important és la saviesa pràctica del metge de tota la vida. La tecnologia pot acompanyar, però el diagnòstic final l'ha de signar una persona que comprengui el context.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-in" style="margin-bottom: 0.5rem; display: inline-block;">Giuliano Pontara</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Drets fonamentals</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Parla dels drets més bàsics de qualsevol persona com la llibertat de decidir, la pròpia salut i la vida. Quan aquests drets xoquen entre si, com en un cas on un pacient rebutja una cura per creences, hem d'estudiar a fons cada situació particular.</p>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Quatre marcs <em>contemporanis</em></h3>
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-out" style="margin-bottom: 0.5rem; display: inline-block;">Gilligan, Noddings</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Ètica de la cura</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Se centra en cuidar les relacions humanes i fer costat al més feble en lloc de fer càlculs freds. Explica molt bé per què un programari mai podrà substituir l'escalfor d'un metge o d'un terapeuta de veritat.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-mb" style="margin-bottom: 0.5rem; display: inline-block;">Martha Nussbaum</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Enfocament de les capacitats</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Diu que totes les persones tenen dret a desenvolupar les seves habilitats vitals. Si una màquina ens redueix a simples dades o etiquetes per a una base de dades, està atacant la nostra dignitat bàsica.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-in" style="margin-bottom: 0.5rem; display: inline-block;">Beauchamp i Childress</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Principalisme bioètic</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Defineix els quatre pilars de la medicina que són fer el bé, no fer mal, respectar les decisions de cadascú i buscar la justícia. Són les guies clàssiques que fan servir els comitès de bioètica de tot el món.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem">
+          <span class="chip chip-out" style="margin-bottom: 0.5rem; display: inline-block;">Floridi, Thompson, Coeckelbergh</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Responsabilitat distribuïda</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Ens avisa que quan la IA i els humans treballen junts, la responsabilitat es reparteix tant que ningú se sent responsable. Això explica per què quan hi ha un error mèdic ens costa molt trobar qui ha de demanar perdó.</p>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Com es <em>projecten</em> sobre els tres casos</h3>
+      <p>Cada història del blog es pot llegir des de moltes perspectives. No hi ha una única veritat, sinó debats diferents segons quins principis triem per guiar-nos.</p>
+
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+        <div class="card" style="padding: 1.5rem; border-top: 2px solid var(--accent);">
+          <span class="chip chip-mb" style="margin-bottom: 0.5rem; display: inline-block;">Cas 01</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">PrioritzarIA</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">L'utilitarisme vol salvar tants anys de vida com pugui, Kant demana no utilitzar criteris socials per ordenar les llistes, la cura ens diu que hem d'atendre qui és més vulnerable i les virtuts demanen que un comitè mèdic decideixi amb prudència.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem; border-top: 2px solid var(--accent);">
+          <span class="chip chip-mb" style="margin-bottom: 0.5rem; display: inline-block;">Cas 02</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">BonavistAI</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Alguns defensaran mantenir la IA per escurçar el temps d'espera global, mentre que la deontologia demanarà tancar-la si comet discriminació. També hem de vigilar amb el principi de no fer mal quan l'error a l'ull és irreversible.</p>
+        </div>
+        <div class="card" style="padding: 1.5rem; border-top: 2px solid var(--accent);">
+          <span class="chip chip-mb" style="margin-bottom: 0.5rem; display: inline-block;">Cas 03</span>
+          <h4 style="margin-top: 0; font-size: 1.1rem; font-family: var(--font-serif);">Psico-Xat</h4>
+          <p style="font-size: 14px; margin-bottom: 0; color: var(--body);">Un punt de vista pràctic acceptarà el xat per arribar a milers de joves que necessiten consell, pero molts demanaran aturar-lo si s'equivoca en un moment crític. A més, cap programa pot imitar la relació amb un terapeuta.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: 2rem;">
+        <p>La conclusió principal de la nostra col·laboració amb en Breixo és que les màquines no eliminen els debats ètics, sinó que els fan encara més evidents. En haver de triar uns valors abans d'escriure el codi ens veiem obligats a triar què té més importància. I aquesta elecció l'hem de prendre nosaltres com a societat.</p>
       </div>
     </section>
 
@@ -123,11 +305,20 @@
       <h2>D'on surt tot això</h2>
       <p>Les referències següents són el material primari sobre el qual es construeix aquest blog. Totes apareixen també a la bibliografia del paper original.</p>
 
+      <a class="reading-card" href="https://www.ara.cat/societat/salut/metges-catalunya-exigeix-rectificacio-dimissio-pane-dir-ia-diagnostica-millor_1_5569713.html" target="_blank" rel="noopener noreferrer">
+        <div class="reading-thumb">🗞️</div>
+        <div>
+          <div class="reading-meta">ARA · 2025</div>
+          <div class="reading-title">Metges de Catalunya exigeix la dimissió de Pané per dir que «la IA diagnostica millor que un metge»</div>
+          <div class="reading-cta">Llegir →</div>
+        </div>
+      </a>
+
       <a class="reading-card" href="https://elmon.cat/es/sociedad/salud/hasta-300-dias-en-lista-de-espera-metges-de-catalunya-denuncia-desigualdad-territorial-1025357/" target="_blank" rel="noopener noreferrer">
         <div class="reading-thumb">📰</div>
         <div>
           <div class="reading-meta">Elmón · 2025</div>
-          <div class="reading-title">«Fins a 300 dies en llista d'espera»: Metges de Catalunya denuncia la desigualtat territorial</div>
+          <div class="reading-title">«Fins a 300 dies en llista d'espera». Metges de Catalunya denuncia la desigualtat territorial</div>
           <div class="reading-cta">Llegir →</div>
         </div>
       </a>
@@ -141,11 +332,20 @@
         </div>
       </a>
 
+      <a class="reading-card" href="https://pubmed.ncbi.nlm.nih.gov/39272776/" target="_blank" rel="noopener noreferrer">
+        <div class="reading-thumb">🔬</div>
+        <div>
+          <div class="reading-meta">Diagnostics (MDPI) · Baget-Bernáldiz et al. · 2024</div>
+          <div class="reading-title">Artificial Intelligence-Based Screening System for Diabetic Retinopathy in Primary Care</div>
+          <div class="reading-cta">Llegir →</div>
+        </div>
+      </a>
+
       <a class="reading-card" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener noreferrer">
         <div class="reading-thumb">⚖️</div>
         <div>
           <div class="reading-meta">DOUE · 2024</div>
-          <div class="reading-title">Reglament (UE) 2024/1689 — Llei d'Intel·ligència Artificial</div>
+          <div class="reading-title">Reglament (UE) 2024/1689, Llei d'Intel·ligència Artificial</div>
           <div class="reading-cta">Text oficial →</div>
         </div>
       </a>
@@ -154,7 +354,7 @@
         <div class="reading-thumb">🔒</div>
         <div>
           <div class="reading-meta">DOUE · 2016</div>
-          <div class="reading-title">Reglament (UE) 2016/679 — Reglament General de Protecció de Dades</div>
+          <div class="reading-title">Reglament (UE) 2016/679, Reglament General de Protecció de Dades</div>
           <div class="reading-cta">Text oficial →</div>
         </div>
       </a>
@@ -167,16 +367,6 @@
           <div class="reading-cta">Text oficial →</div>
         </div>
       </a>
-    </section>
-
-    <section id="cta" class="reveal">
-      <div class="section-label">El paper acadèmic</div>
-      <h2>Vols aprofundir més?</h2>
-      <p>Tot aquest context i els resultats detallats de l'enquesta els pots trobar complets a l'informe acadèmic oficial que acompanya aquest projecte. També pots explorar com s'aplica aquest marc als nostres tres casos pràctics.</p>
-      <div class="cta-row">
-        <a class="cta-btn primary" href="assets/draft-paper.pdf" download>↓ Descarregar el paper (PDF)</a>
-        <a class="cta-btn" href="prioritzaria.html">Començar pels casos pràctics →</a>
-      </div>
     </section>
 
   </main>

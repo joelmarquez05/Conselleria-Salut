@@ -20,9 +20,11 @@
   var path = (location.pathname.split('/').pop() || '').toLowerCase();
   var current = path.replace(/\.html$/, '') || 'index';
   document.querySelectorAll('.nav-links a').forEach(function (a) {
-    var href = (a.getAttribute('href') || '').toLowerCase().replace(/\.html$/, '');
+    var rawHref = (a.getAttribute('href') || '').toLowerCase();
+    var hasAnchor = rawHref.indexOf('#') !== -1;
+    var href = rawHref.replace(/#.*$/, '').replace(/\.html$/, '');
     if (href === current) {
-      a.classList.add('active');
+      if (!hasAnchor) a.classList.add('active');
       var dropdown = a.closest('.nav-dropdown');
       if (dropdown) {
         var toggle = dropdown.querySelector('.nav-dropdown-toggle');
@@ -237,5 +239,23 @@
   });
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) document.body.classList.remove('page-leaving');
+  });
+})();
+
+(function () {
+  document.querySelectorAll('.tab-btn[data-target]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var row = btn.closest('.tab-row');
+      if (!row) return;
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      if (!target) return;
+      row.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var panelParent = target.parentElement;
+      if (panelParent) {
+        panelParent.querySelectorAll(':scope > .ethics-panel').forEach(function (p) { p.classList.remove('active'); });
+      }
+      target.classList.add('active');
+    });
   });
 })();
